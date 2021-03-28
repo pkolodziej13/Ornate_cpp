@@ -1,6 +1,6 @@
 #pragma once
 #include "Trigonometry_utilities.h"
-#include "Linear_algebra_utility_types.h"
+#include "Used_linear_algebra.h"
 
 
 namespace mth::geo3
