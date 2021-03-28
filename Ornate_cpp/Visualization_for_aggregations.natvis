@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="agg::Loose_Node&lt;T&gt;">
+    <DisplayString Condition="next->next==next">empty </DisplayString>
+    <DisplayString Condition="next->next!=next">connected </DisplayString>
+    <Expand>
+      <LinkedListItems>
+        <HeadPointer>next</HeadPointer>
+        <NextPointer>next</NextPointer>
+        <ValueNode>((Element_node*)(this))->element</ValueNode>
+      </LinkedListItems>
+    </Expand>
+  </Type>
+</AutoVisualizer>

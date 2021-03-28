@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{9e930d95-4a83-4c40-9ef4-78071cff2d7b}</ProjectGuid>
+    <RootNamespace>Ornatecpp</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Collisions\Ball.h" />
+    <ClInclude Include="Collisions\Box.h" />
+    <ClInclude Include="Collisions\Rectangular_plane.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="Math\Axis_3d.h" />
+    <ClInclude Include="Math\Axis_turn.h" />
+    <ClInclude Include="Math\Complex_multiplication.h" />
+    <ClInclude Include="Math\Direction_2d.h" />
+    <ClInclude Include="Math\Direction_4d.h" />
+    <ClInclude Include="Math\Fixed_point_number.h" />
+    <ClInclude Include="Math\Front_up.h" />
+    <ClInclude Include="Math\Integer_construction.h" />
+    <ClInclude Include="Math\Linear_algebra_utilities.h" />
+    <ClInclude Include="Math\Linear_algebra_utility_types.h" />
+    <ClInclude Include="Math\Model_matrix.h" />
+    <ClInclude Include="Math\Plane.h" />
+    <ClInclude Include="Math\Quaternion_rotation.h" />
+    <ClInclude Include="Math\Range.h" />
+    <ClInclude Include="Math\Rotation_matrix_2d.h" />
+    <ClInclude Include="Math\Trigonometry_utilities.h" />
+    <ClInclude Include="Math\Turn.h" />
+    <ClInclude Include="Math\Used_linear_algebra.h" />
+    <ClInclude Include="Math\Vector_component.h" />
+    <ClInclude Include="Math\View_matrix.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\bimap.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Dense.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Doubly_linked_list_node.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Invoker.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Loose_List.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Multiarray.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Multiarray_orientation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Ordered_tree.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Ordered_tree_view.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pooled_indexes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pool_synchronized.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pool_unordered.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Symetric_value_table.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Variations_callbacks.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Variation_invokers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\vector_set.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_calling_events.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_collider_completed.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_collider_rejestr.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_complete.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_contacts_handling.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_collider_relation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_collider_relation_care.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_complete.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_layers_collisions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_matching_colliders_with_objects.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_object_completed.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_redirecting_Engine_collider_relation_events.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_rejestring_colliders_considering_objects_number.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_relations.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_requirements.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Contacts_transfering.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Engine_object_relation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Grouping_colliders_regard_layers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Grouping_in_synchronized_pool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Interactive_pool_relation_side.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Object_contacts.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Object_side_engine_relation.h" />
+    <ClInclude Include="Collisions\Checking_collisions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Synchronized_vector.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Arithmetic_additable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Arithmetic_multiplicable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Float_utilities.h" />
+    <ClInclude Include="Math\Direction_3d.h" />
+    <ClInclude Include="Math\Geometry_utilities_3d.h" />
+    <ClInclude Include="Math\Matrix.h" />
+    <ClInclude Include="Math\Trigonometry.h" />
+    <ClInclude Include="Math\Normalized.h" />
+    <ClInclude Include="Math\Vector_mth.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Integer_operations.h" />
+    <ClInclude Include="Math\Projection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Multiplier_deduction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\rec_frame.h" />
+    <ClInclude Include="Math\Rotation_matrix_3d.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Global_instance.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Individual.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instances_global_book.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instance_global_indexing.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instance_global_single.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Life_observing.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Mutual_relation_resolver.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Polymorphism.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Prototype.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relations_popular.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_common.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_final.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_individual_base.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_mutual.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_profiled.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_indexed.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_list.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_map.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_pool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_single.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_symetric.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_utilities.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_value_manager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_events.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_value.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Standard_relations.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Value_possesing.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\cpp_utility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Diagnosing.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Functions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Functions_parametrized_pointers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Function_parametrization.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Members.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Nonstandard_deductions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_indexing.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_inheriting.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_logic.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_transformations.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_utility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Parametrized_method.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Type_information.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Utility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Certain_responsibility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Comparing_complexity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Computational_complexity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\containing_holder_ptr.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\containing_shared_ptr.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Debug.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\holder_ptr.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Index.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Input_responsibility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Iterating_with_group.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\loops.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Multidimensional_iterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Natural_optional.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Non_replicable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\No_responsibility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_components.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\numbered_inheritance.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_operations.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Number_range.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numeration.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Optional_member_variable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\pointers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Programmer_responsibility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Range_for_loop.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Representatives.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Responsibility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Result_as_success.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Utility.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_cell_deduction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_computing_cell.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\values_network.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_provider_and_receptor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Variant_dynamic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="Visualization_for_aggregations.natvis" />
+    <Natvis Include="Visualization_of_math.natvis" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

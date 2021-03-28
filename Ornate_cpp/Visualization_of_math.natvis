@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="mth::linear_algebra::g_vec&lt;*,1,*&gt;">
+    <DisplayString>{x,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::linear_algebra::g_vec&lt;*,2,*&gt;">
+    <DisplayString>{x,g}, {y,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::linear_algebra::g_vec&lt;*,3,*&gt;">
+    <DisplayString>{x,g}, {y,g}, {z,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+      <Item Name="z" ExcludeView="simple">z</Item>
+      <Item Name="length_pow" ExcludeView="simple">x*x+y*y+z*z</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::linear_algebra::g_vec&lt;*,4,*&gt;">
+    <DisplayString>{x,g}, {y,g}, {z,g}, {w,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+      <Item Name="z" ExcludeView="simple">z</Item>
+      <Item Name="w" ExcludeView="simple">w</Item>
+    </Expand>
+  </Type>
+  
+  <Type Name="mth::linear_algebra::g_mat&lt;*,2,*&gt;">
+    <DisplayString>{x,g}, {y,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::linear_algebra::g_mat&lt;*,3,*&gt;">
+    <DisplayString>{x,g}, {y,g}, {z,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+      <Item Name="z" ExcludeView="simple">z</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::linear_algebra::g_mat&lt;*,4,*&gt;">
+    <DisplayString>{x,g}, {y,g}, {z,g}, {w,g}</DisplayString>
+    <Expand>
+      <Item Name="x" ExcludeView="simple">x</Item>
+      <Item Name="y" ExcludeView="simple">y</Item>
+      <Item Name="z" ExcludeView="simple">z</Item>
+      <Item Name="w" ExcludeView="simple">w</Item>
+    </Expand>
+  </Type>
+  <Type Name="mth::norm&lt;*&gt;">
+    <DisplayString>{$T1(double(it)/double(max_value))}</DisplayString>
+    <Expand>
+    </Expand>
+  </Type>
+  <Type Name="mth::Turn">
+    <DisplayString>{value,g}</DisplayString>
+    <Expand>
+    </Expand>
+  </Type>
+</AutoVisualizer>

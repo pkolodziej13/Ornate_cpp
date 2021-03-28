@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Default Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Aggregations">
+      <UniqueIdentifier>{5dcae905-c005-4651-846e-b917f7df0f1e}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Collisions">
+      <UniqueIdentifier>{75fcf05d-312e-490a-b191-92771cdcda68}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{afb0c43e-eaab-4c8b-ac07-b88f91de7dcd}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{b1b2b95b-655a-4499-a370-9f46afb422a6}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{56834b71-3d02-42c3-a292-5a5ddf7920a3}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{3ce2ba3f-13fd-4838-94c0-daa1ddede4c6}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Collisions\Engine">
+      <UniqueIdentifier>{ca60d7cc-d834-45be-8622-4abb8e2a76fe}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Collisions\Used_constructs">
+      <UniqueIdentifier>{c59ca1fa-730b-4413-a3f6-a0f6faa15939}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Objects\Relations">
+      <UniqueIdentifier>{c215dd72-9bd0-45a8-be56-295ae0d05864}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Types\Pack">
+      <UniqueIdentifier>{ae03b16f-8283-44bb-af11-ff50c320ba56}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Utilities\Constructs">
+      <UniqueIdentifier>{26ce4182-1e2c-47f8-99d0-75dc4af7bd71}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Utilities\Responsibility">
+      <UniqueIdentifier>{b48e93b2-ee7b-4d2a-b0fc-1f4e9cd6b134}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Math\Linear_algebra">
+      <UniqueIdentifier>{1a2f0f37-0f90-4afb-995d-61f49baf12f7}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Math\Geometry">
+      <UniqueIdentifier>{bc427bcf-42fd-4cfb-b14e-5ea685c73911}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Default Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Default Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\bimap.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Dense.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Doubly_linked_list_node.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Invoker.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Loose_List.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Multiarray.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Multiarray_orientation.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Ordered_tree.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Ordered_tree_view.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pool_synchronized.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pool_unordered.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Pooled_indexes.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Symetric_value_table.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Variation_invokers.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Variations_callbacks.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\vector_set.h">
+      <Filter>Aggregations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Float_utilities.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Trigonometry.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Normalized.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Integer_operations.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Global_instance.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Individual.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instance_global_indexing.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instance_global_single.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Instances_global_book.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Life_observing.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Polymorphism.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Prototype.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\cpp_utility.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Diagnosing.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Function_parametrization.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Functions.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Functions_parametrized_pointers.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Members.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Nonstandard_deductions.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Type_information.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Utility.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Comparing_complexity.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Computational_complexity.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Debug.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Index.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Iterating_with_group.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\loops.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Multidimensional_iterator.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Natural_optional.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Non_replicable.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Number_range.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Optional_member_variable.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Range_for_loop.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Result_as_success.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Time.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Utility.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_calling_events.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_collider_completed.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_collider_rejestr.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_contacts_handling.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_collider_relation.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_collider_relation_care.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_Engine_complete.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_layers_collisions.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_matching_colliders_with_objects.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_object_completed.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_redirecting_Engine_collider_relation_events.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_rejestring_colliders_considering_objects_number.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_relations.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_requirements.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Contacts_transfering.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Engine_object_relation.h">
+      <Filter>Collisions\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions\Checking_collisions.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Collisions_engine_complete.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Grouping_colliders_regard_layers.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Grouping_in_synchronized_pool.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Synchronized_vector.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Object_contacts.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Object_side_engine_relation.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collisions\Interactive_pool_relation_side.h">
+      <Filter>Collisions\Used_constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Direction_3d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Projection.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\rec_frame.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rotation_matrix_3d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector_mth.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_common.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_final.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_individual_base.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_mutual.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_profiled.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_indexed.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_list.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_map.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_pool.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_single.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_symetric.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_utilities.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_value_manager.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_events.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_value.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relations_popular.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Mutual_relation_resolver.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Standard_relations.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Value_possesing.h">
+      <Filter>Objects\Relations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_indexing.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_inheriting.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_logic.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_transformations.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Pack_utility.h">
+      <Filter>Types\Pack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Certain_responsibility.h">
+      <Filter>Utilities\Responsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Input_responsibility.h">
+      <Filter>Utilities\Responsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\No_responsibility.h">
+      <Filter>Utilities\Responsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Responsibility.h">
+      <Filter>Utilities\Responsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Programmer_responsibility.h">
+      <Filter>Utilities\Responsibility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\containing_holder_ptr.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\containing_shared_ptr.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\holder_ptr.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_components.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\numbered_inheritance.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_operations.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numeration.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\pointers.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Representatives.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_cell_deduction.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_computing_cell.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\values_network.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Variant_dynamic.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_provider_and_receptor.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Geometry_utilities_3d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Arithmetic_additable.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Arithmetic_multiplicable.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Types\Parametrized_method.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Math\Multiplier_deduction.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Integer_construction.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Fixed_point_number.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector_component.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Range.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Trigonometry_utilities.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Turn.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Front_up.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Axis_turn.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Linear_algebra_utility_types.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Used_linear_algebra.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\View_matrix.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Model_matrix.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rotation_matrix_2d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Direction_2d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions\Box.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions\Ball.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Plane.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Axis_3d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions\Rectangular_plane.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Complex_multiplication.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Direction_4d.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Quaternion_rotation.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Linear_algebra_utilities.h">
+      <Filter>Math\Linear_algebra</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Default Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="Visualization_of_math.natvis">
+      <Filter>Math</Filter>
+    </Natvis>
+    <Natvis Include="Visualization_for_aggregations.natvis">
+      <Filter>Aggregations</Filter>
+    </Natvis>
+  </ItemGroup>
+</Project>
