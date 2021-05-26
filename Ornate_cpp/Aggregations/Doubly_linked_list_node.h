@@ -33,7 +33,7 @@ namespace agg
 			back->connect_next(*next);
 			connect_self();
 		}
-		void Link_chain_as_next(Individualist& first_node_of_chain)
+		void link_chain_as_next(Individualist& first_node_of_chain)
 		{
 			this_type& has_to_be_after_new = this->next_node();
 			this_type& last_node_of_new = first_node_of_chain.back_node();
@@ -41,9 +41,9 @@ namespace agg
 			this->connect_next(first_node_of_chain);
 			last_node_of_new.connect_next(has_to_be_after_new);
 		}
-		void Link_chain_as_previous(Individualist& first_node_of_chain)
+		void link_chain_as_previous(Individualist& first_node_of_chain)
 		{
-			this->back_node().Link_chain_as_next(first_node_of_chain);
+			this->back_node().link_chain_as_next(first_node_of_chain);
 		}
 		void swap_with_next()
 		{

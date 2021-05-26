@@ -7,7 +7,7 @@ namespace col
 {
 	template<class Individualist,class Comparer>
 	struct Contacts_handling:
-		Events_reqirement::Events_caller<Individualist, Comparer>
+		Events_requirement::Events_caller<Individualist, Comparer>
 	{
 		using this_type = Contacts_handling<Individualist, Comparer>;
 
@@ -63,7 +63,7 @@ namespace col
 		};
 
 		template<class Connections, size_t I1, size_t I2>
-		void set_contacs(const Connections& connections, std::array<Object_unified*, I1>& objects1, std::array<Object_unified*, I2>& objects2)
+		void set_contacs(const Connections& connections, std::array<Object_unified*, I1>const & objects1, std::array<Object_unified*, I2>const& objects2)
 		{
 			using callers_table = typ::Functions_parametrized_pointers<Calling_set_contact, Comparer::collisons_number>;
 			for (const auto& object_contacts : connections)

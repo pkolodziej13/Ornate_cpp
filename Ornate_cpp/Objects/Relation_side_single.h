@@ -7,13 +7,13 @@
 
 namespace obj
 {
-	struct Single_relation
+	struct Relation_side_single
 	{
 		using key_to_this = void;
-		using direct_complexity = uti::constant_complexity<1>;
+		using direct_complexity = uti::Constant_complexity<1>;
 
 		template<class Wing>
-		struct relation_individual
+		struct Relation_individual
 		{
 			static constexpr size_t oposite_number = Wing::oposite_type_number;
 			using Oposite = typename Wing::Oposite_wing::Individual;
@@ -33,12 +33,12 @@ namespace obj
 		private:
 			friend typename Wing::Master;
 			friend Mutual_relation_resolver<typename Wing::Master>;
-			template<class F>
-			inline void for_each(F&& lam)
+			template<class Lambda>
+			inline void for_each(Lambda&& lambda)
 			{
 				if (container.connected())
 				{
-					lam(*container.related, static_cast<const Concomitant&>(container));
+					lambda(*container.related, static_cast<const Concomitant&>(container));
 				}
 			}
 
@@ -66,7 +66,7 @@ namespace obj
 				container.related = nullptr;
 			}
 
-			uti::constant_complexity<1> finding_complexity()
+			uti::Constant_complexity<1> finding_complexity()
 			{
 				return {};
 			}

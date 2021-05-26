@@ -7,54 +7,66 @@
 namespace uti
 {
 	template<size_t balast>
-	struct constant_complexity
+	struct Constant_complexity
 	{
-		static constexpr size_t balast_value = balast;
-		constexpr size_t total() { return balast; }
+		constexpr size_t total() 
+		{ 
+			return balast; 
+		}
 		template<size_t to_multily>
-		constant_complexity<balast*to_multily> multiply()
+		Constant_complexity<balast*to_multily> multiply()
 		{
 			return {};
 		}
 		template<size_t to_add>
-		constant_complexity<balast+to_add> add()
+		Constant_complexity<balast+to_add> add()
 		{
 			return {};
 		}
-	};
-	template<size_t balast>
-	struct linear_complexity
-	{
 		static constexpr size_t balast_value = balast;
-		size_t elements;
-		size_t total() { return elements* balast; }
+	};
+
+	template<size_t balast>
+	struct Linear_complexity
+	{
+		size_t total() 
+		{ 
+			return elements* balast; 
+		}
 		template<size_t to_multily>
-		linear_complexity<balast*to_multily> multiply()
+		Linear_complexity<balast*to_multily> multiply()
 		{
 			return { elements };
 		}
 		template<size_t to_add>
-		linear_complexity<balast + to_add> add()
+		Linear_complexity<balast + to_add> add()
 		{
 			return { elements };
 		}
-	};
-	template<size_t balast>
-	struct logarythmic_complexity
-	{
+
 		static constexpr size_t balast_value = balast;
 		size_t elements;
-		size_t total() { return balast * size_t(std::log(elements) / std::log(2)); }
+	};
+	template<size_t balast>
+	struct Logarythmic_complexity
+	{
+		size_t total() 
+		{ 
+			return balast * size_t(std::log(elements) / std::log(2)); 
+		}
 		template<size_t to_multily>
-		logarythmic_complexity<balast*to_multily> multiply()
+		Logarythmic_complexity<balast*to_multily> multiply()
 		{
 			return { elements };
 		}
 		template<size_t to_add>
-		logarythmic_complexity<balast + to_add> add()
+		Logarythmic_complexity<balast + to_add> add()
 		{
 			return { elements };
 		}
+
+		static constexpr size_t balast_value = balast;
+		size_t elements;
 	};
 
 }

@@ -55,23 +55,23 @@ namespace typ
 {
 	namespace detail
 	{
-		template<class base, template<class >class trail_template>
-		struct detector
+		template<class Base, template<class >class Trail_template>
+		struct Detector
 		{
-			template<class t, class = trail_template<t>>
+			template<class T, class = Trail_template<T>>
 			static std::true_type trail(int);
 			template<class t>
 			static std::false_type trail(...);
 
-			using type = decltype(trail<base>(0));
+			using type = decltype(trail<Base>(0));
 			static constexpr bool value = type::value;
 		};
 
 	}
 
-	template <class base, template<class >class trail_template>
-	using is_detected_t = typename detail::detector<base, trail_template>::type;
-	template <class base, template<class >class trail_template>
-	constexpr bool is_detected = is_detected_t<base, trail_template>::value;
+	template <class Base, template<class >class Trail_template>
+	using is_detected_t = typename detail::Detector<Base, Trail_template>::type;
+	template <class Base, template<class >class Trail_template>
+	constexpr bool is_detected = is_detected_t<Base, Trail_template>::value;
 
 }

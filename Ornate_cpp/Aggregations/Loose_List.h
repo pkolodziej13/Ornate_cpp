@@ -7,7 +7,7 @@
 
 namespace agg
 {
-	template<class t>
+	template<class T>
 	struct Loose_element;
 	template<class T>
 	struct Loose_node :Doubly_linked_list_node<Loose_node<T>>,uti::non_replicable
@@ -15,24 +15,24 @@ namespace agg
 		using type = T;
 		using Element_node = Loose_element<T>;
 	};
-	template<class t>
-	struct Loose_element :Loose_node<t>
+	template<class T>
+	struct Loose_element :Loose_node<T>
 	{
 		template<class ... Args_v>
 		Loose_element(Args_v && ... args_v) :element(std::forward<Args_v>(args_v)...)
 		{
 
 		}
-		t& get()
+		T& get()
 		{
 			return element;
 		}
-		t& get()const
+		T& get()const
 		{
 			return element;
 		}
 	private:
-		t element;
+		T element;
 	};
 
 
@@ -41,17 +41,17 @@ namespace agg
 	{
 
 		template<class ... Args_v>
-		std::shared_ptr<Loose_element<T> > Create_as_first(Args_v && ... args_v)
+		std::shared_ptr<Loose_element<T> > create_as_first(Args_v && ... args_v)
 		{
 			auto result= std::make_shared<Loose_element<T>>(std::forward<Args_v>(args_v)...);
 			this->Link_chain_as_next(*result);
 			return result;
 		}
 		template<class ... Args_v>
-		std::shared_ptr<Loose_element<T> > Create_as_last(Args_v && ... args_v)
+		std::shared_ptr<Loose_element<T> > create_as_last(Args_v && ... args_v)
 		{
 			auto result = std::make_shared<Loose_element<T>>(std::forward<Args_v>(args_v)...);
-			this->Link_chain_as_previous(*result);
+			this->link_chain_as_previous(*result);
 			return result;
 		}
 
@@ -93,8 +93,8 @@ namespace agg
 
 			Save_loop_range(Loose_list& list)
 			{
-				list.Link_chain_as_next(begin_node_mark);
-				list.Link_chain_as_previous(end_node_mark);
+				list.link_chain_as_next(begin_node_mark);
+				list.link_chain_as_previous(end_node_mark);
 				last_selected_element = &begin_node_mark.next_node();
 			}
 			bool finished()const
@@ -124,11 +124,11 @@ namespace agg
 			Loose_node<T>* last_selected_element = nullptr;
 		};
 
-		auto Fast_range()
+		auto fast_range()
 		{
 			return uti::Range_for_loop<Fast_loop_range>(*this);
 		}
-		auto Save_range()
+		auto save_range()
 		{
 			return uti::Range_for_loop<Save_loop_range>(*this);
 		}

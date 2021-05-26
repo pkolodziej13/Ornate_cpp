@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-#include <Utilities/values_network.h>
+#include <Utilities/Values_cell_deduction.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,10 +12,10 @@ public:
 
 	TEST_METHOD(provider_and_receptor_test)
 	{
-		uti::free_provider<int> provider{ 0 };
-		struct con_rep :uti::receptor<int>
+		uti::Free_provider<int> provider{ 0 };
+		struct con_rep :uti::Receptor<int>
 		{
-			using uti::receptor<int>::receptor;
+			using uti::Receptor<int>::Receptor;
 			virtual void proceed()
 			{
 				a = this->value();
@@ -29,10 +29,10 @@ public:
 	}
 	TEST_METHOD(computing_cell_test)
 	{
-		uti::free_provider<int> provider1{ 3 };
-		uti::free_provider<float> provider2{ 2.f };
+		uti::Free_provider<int> provider1{ 3 };
+		uti::Free_provider<float> provider2{ 2.f };
 		int a;
-		uti::computing_cell<typ::Pack<int, float, int>, typ::Pack<>> cc
+		uti::Computing_cell<typ::Pack<int, float, int>, typ::Pack<>> cc
 		{
 			[&](int d,float b,int c)
 			{
@@ -50,8 +50,8 @@ public:
 	}
 	TEST_METHOD(making_cell_test)
 	{
-		uti::free_provider<int> p1{ 3 };
-		uti::free_provider<float> p2{ 2.f };
+		uti::Free_provider<int> p1{ 3 };
+		uti::Free_provider<float> p2{ 2.f };
 
 		int c = 0;
 		auto cell = uti::make_computing_cell([&](int a, float b) {
@@ -64,8 +64,8 @@ public:
 	}
 	TEST_METHOD(making_cell_from_cell_test)
 	{
-		uti::free_provider<int> p1{ 1 };
-		uti::free_provider<float> p2{ 1.f };
+		uti::Free_provider<int> p1{ 1 };
+		uti::Free_provider<float> p2{ 1.f };
 
 		auto cell = uti::make_computing_cell([&](int a, float b,int & c,float &d) {
 			c = int( a + b );

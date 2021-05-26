@@ -151,8 +151,8 @@ namespace mth::geo3
 		Rotation_matrix clockwise = Axis_turn{ sum,1.f / 3.f };
 		Rotation_matrix counter_clockwise = clockwise.inversed();
 
-		const float sum_part = sqrtf(1.f / 3.f);
-		const float direction_part = sqrtf(2.f / 3.f);
+		const float sum_part = std::sqrtf(1.f / 3.f);
+		const float direction_part = std::sqrtf(2.f / 3.f);
 
 		mat3 result;
 

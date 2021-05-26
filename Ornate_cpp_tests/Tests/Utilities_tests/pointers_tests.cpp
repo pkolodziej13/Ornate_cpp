@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-
-#include <Utilities/pointers.h>
+#include <Utilities/containing_shared_ptr.h>
+#include <Utilities/holder_ptr.h>
+#include <Utilities/containing_holder_ptr.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

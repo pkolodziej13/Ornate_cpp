@@ -1,99 +1,100 @@
 #pragma once
 #include <functional>
 #include <tuple>
+#include <stdexcept>
 
 #include <Types/Pack.h>
 
-#include "numbered_inheritance.h"
+#include "Numbered_inheritance.h"
 #include "Values_provider_and_receptor.h"
 
 namespace uti
 {
-	template<class ... t_v>
-	struct multiple_receptors_inheriting
-		:numbered_inheritance<typ::Pack<receptor<t_v>...>>
+	template<class ... T_v>
+	struct Multiple_receptors_inheriting
+		:Numbered_inheritance<typ::Pack<Receptor<T_v>...>>
 	{
-		using types = typ::Pack<t_v...>;
-		multiple_receptors_inheriting(provider<t_v> & ... providers)
-			:numbered_inheritance<typ::Pack<receptor<t_v>...>>{ providers ... }
+		using Types_p = typ::Pack<T_v...>;
+		Multiple_receptors_inheriting(Provider<T_v> & ... providers)
+			:Numbered_inheritance<typ::Pack<Receptor<T_v>...>>{ providers ... }
 		{}
-		template<class t>
-		receptor<t>& get_receptor()
+		template<class T>
+		Receptor<T>& get_receptor()
 		{
-			return this->get<receptor<t>>();
+			return this->get<Receptor<T>>();
 		}
-		template<class t>
-		const receptor<t>& get_receptor()const
+		template<class T>
+		const Receptor<T>& get_receptor()const
 		{
-			return this->get<receptor<t>>();
+			return this->get<Receptor<T>>();
 		}
 		template<size_t i>
-		receptor<typ::p_element<i, types>>& get_receptor()
+		Receptor<typ::p_element<i, Types_p>>& get_receptor()
 		{
 			return this->get<i>();
 		}
 		template<size_t i>
-		const receptor<typ::p_element<i, types>>& get_receptor()const
-		{
-			return this->get<i>();
-		}
-	};
-	template<class ... t_v>
-	struct multiple_providers
-		:numbered_inheritance<typ::Pack<provider<t_v>...>>
-	{
-		using types = typ::Pack<t_v...>;
-		multiple_providers() = default;
-
-		template<class t>
-		provider<t>& get_provider()
-		{
-			return this->get<provider<t>>();
-		}
-		template<class t>
-		const provider<t>& get_provider()const
-		{
-			return this->get<provider<t>>();
-		}
-		template<size_t i>
-		provider<typ::p_element<i, types>>& get_provider()
-		{
-			return this->get<i>();
-		}
-		template<size_t i>
-		const provider<typ::p_element<i, types>>& get_provider()const
+		const Receptor<typ::p_element<i, Types_p>>& get_receptor()const
 		{
 			return this->get<i>();
 		}
 	};
-
-	template<class receptors_p, class providers_p, class = std::make_index_sequence<receptors_p::size>, class = std::make_index_sequence<providers_p::size> >
-	struct computing_cell;
-
-	template<class ... receptors_v, class ... providers_v, size_t ... rec_iv, size_t ... pro_iv>
-	struct computing_cell<typ::Pack<receptors_v...>, typ::Pack<providers_v...>, std::index_sequence<rec_iv...>, std::index_sequence<pro_iv...>>
-		:multiple_receptors_inheriting<receptors_v...>, multiple_providers<providers_v...>
+	template<class ... T_v>
+	struct Multiple_providers
+		:Numbered_inheritance<typ::Pack<Provider<T_v>...>>
 	{
-		using base_type = multiple_receptors_inheriting<receptors_v...>;
-		using providers_p = typ::Pack<providers_v...>;
-		using computation_func = std::function<void(const receptors_v &..., providers_v & ...)>;
-		computing_cell(computation_func func, provider<receptors_v> & ... providers)
-			:base_type(providers...), func(func)
+		using Types_p = typ::Pack<T_v...>;
+		Multiple_providers() = default;
+
+		template<class T>
+		Provider<T>& get_provider()
 		{
-			if (!func)
-				throw "there must be function";
+			return this->get<Provider<T>>();
+		}
+		template<class T>
+		const Provider<T>& get_provider()const
+		{
+			return this->get<Provider<T>>();
+		}
+		template<size_t i>
+		Provider<typ::p_element<i, Types_p>>& get_provider()
+		{
+			return this->get<i>();
+		}
+		template<size_t i>
+		const Provider<typ::p_element<i, Types_p>>& get_provider()const
+		{
+			return this->get<i>();
+		}
+	};
+
+	template<class Receptors_p, class Providers_p, class = std::make_index_sequence<Receptors_p::size>, class = std::make_index_sequence<Providers_p::size> >
+	struct Computing_cell;
+
+	template<class ... Receptors_v, class ... Providers_v, size_t ... rec_iv, size_t ... pro_iv>
+	struct Computing_cell<typ::Pack<Receptors_v...>, typ::Pack<Providers_v...>, std::index_sequence<rec_iv...>, std::index_sequence<pro_iv...>>
+		:Multiple_receptors_inheriting<Receptors_v...>, Multiple_providers<Providers_v...>
+	{
+		using base_type = Multiple_receptors_inheriting<Receptors_v...>;
+		using Providers_p = typ::Pack<Providers_v...>;
+		using Computation_func = std::function<void(const Receptors_v &..., Providers_v & ...)>;
+		Computing_cell(Computation_func function_to_set, Provider<Receptors_v> & ... providers)
+			:base_type(providers...), function(function_to_set)
+		{
+			if (!function)
+				throw std::runtime_error("there must be a function");
 			proceed();
 		}
 		void proceed() override
 		{
-			std::tuple<providers_v ...> targets;
-			auto & hidding_waring_C4101 = targets;//remove when fixed 
-			func(this->get_receptor<rec_iv>().value()..., std::get<pro_iv>(targets)...);
-			((this->inherited_on_number<provider<providers_v>, pro_iv>::set(std::get<pro_iv>(targets))), ...);
+			std::tuple<Providers_v ...> targets;
+			auto& hiding_warning_C4101 = targets;//remove on VS fix
+			function(this->get_receptor<rec_iv>().value()..., std::get<pro_iv>(targets)...);
+			((this->Inherited_on_number<Provider<Providers_v>, pro_iv>::set(std::get<pro_iv>(targets))), ...);
 		}
 
 	private:
-		computation_func func;
+		Computation_func function;
 	};
 
 }

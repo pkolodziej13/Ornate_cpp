@@ -3,58 +3,68 @@
 
 namespace obj
 {
-	template<class t>
+	template<class T>
 	struct Prototype
 	{
 	private:
 		struct Abstract_accessor_copier
 		{
 			virtual std::shared_ptr<Abstract_accessor_copier> copy()const = 0;
-			virtual const t& get()const = 0;
-			virtual t& get() = 0;
+			virtual const T& get()const = 0;
+			virtual T& get() = 0;
 		};
-		template<class inherited>
+		template<class Inherited>
 		struct Accessor_copier :Abstract_accessor_copier
 		{
-			Accessor_copier(const inherited& to_copy) :object(to_copy) {}
-			inherited object;
+			Accessor_copier(const Inherited& to_copy) 
+				:object(to_copy) {}
 			virtual std::shared_ptr<Abstract_accessor_copier> copy()const
 			{
-				return std::make_shared<Accessor_copier<inherited>>(object);
+				return std::make_shared<Accessor_copier<Inherited>>(object);
 			}
-			virtual const t& get()const
+			virtual const T& get()const
 			{
 				return object;
 			}
-			virtual t& get()
+			virtual T& get()
 			{
 				return object;
 			}
+		private:
+			Inherited object;
 		};
 
-		std::shared_ptr<Abstract_accessor_copier> proto_object;
 	public:
-		Prototype() :proto_object(std::make_shared<Accessor_copier<t>>(t{})) {}
-		template<class inherited, class Enable = std::enable_if_t<std::is_base_of_v<t, inherited>>>
-		Prototype(const inherited& to_copy) : proto_object(std::make_shared<Accessor_copier<inherited>>(to_copy)) {}
-		Prototype(const t& to_copy) :proto_object(std::make_shared<Accessor_copier<t>>(to_copy)) {}
-		Prototype(const Prototype<t>& to_copy) :proto_object(to_copy.proto_object->copy()) {}
-		Prototype& operator=(const Prototype<t>& to_copy)
+		Prototype() 
+			:prototype_object(std::make_shared<Accessor_copier<T>>(T{})) {}
+		template<class Inherited, class Enable = std::enable_if_t<std::is_base_of_v<T, Inherited>>>
+		Prototype(const Inherited& to_copy) 
+			: prototype_object(std::make_shared<Accessor_copier<Inherited>>(to_copy)) {}
+		Prototype(const T& to_copy) 
+			:prototype_object(std::make_shared<Accessor_copier<T>>(to_copy)) {}
+		Prototype(const Prototype<T>& to_copy) 
+			:prototype_object(to_copy.prototype_object->copy()) {}
+
+		Prototype& operator=(const Prototype<T>& to_copy)
 		{
-			proto_object = to_copy.proto_object->copy();
+			prototype_object = to_copy.prototype_object->copy();
 			return *this;
 		}
-
-
-		template<class inherited, class Enable = std::enable_if_t<std::is_base_of_v<t, inherited>>>
-		void emplace(const inherited& to_copy) { proto_object = std::make_shared<Accessor_copier<inherited>>(to_copy); }
-		t* operator->()
-		{
-			return &proto_object->get();
+		template<class Inherited, class Enable = std::enable_if_t<std::is_base_of_v<T, Inherited>>>
+		void emplace(const Inherited& to_copy) 
+		{ 
+			prototype_object = std::make_shared<Accessor_copier<Inherited>>(to_copy); 
 		}
-		t& get()
+		T* operator->()
 		{
-			return proto_object->get();
+			return &prototype_object->get();
 		}
+		T& get()
+		{
+			return prototype_object->get();
+		}
+	private:
+		std::shared_ptr<Abstract_accessor_copier> prototype_object;
+
 	};
 }

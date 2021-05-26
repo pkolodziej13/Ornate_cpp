@@ -26,6 +26,7 @@ namespace uti
 		{
 			return value = inactive;
 		}
+
 		T value{ inactive };
 	};
 }

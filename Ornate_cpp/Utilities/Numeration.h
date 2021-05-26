@@ -10,86 +10,87 @@ namespace uti
 {
 	namespace detail
 	{
-		template<class pack, class sequence>
+		template<class T_p, class Sequence>
 		struct Transform_to_numbered_elemnts;
-		template<class ... p_v, size_t ... I_v>
-		struct Transform_to_numbered_elemnts<typ::Pack<p_v...>, ::std::index_sequence<I_v...>>
+		template<class ... T_v, size_t ... i_v>
+		struct Transform_to_numbered_elemnts<typ::Pack<T_v...>, ::std::index_sequence<i_v...>>
 		{
-			using type = typ::Pack<uti::Numbered_component<p_v, I_v>...>;
+			using type = typ::Pack<uti::Numbered_component<T_v, i_v>...>;
 		};
 		template<class T>
 		using Non_void = std::integral_constant<bool, !std::is_same_v<typename T::type, void>>;
 
-		template<class pack>
-		using Types_sequence_to_numbered_elements = typ::p_select<Non_void, typ::type_of<Transform_to_numbered_elemnts<pack, std::make_index_sequence<pack::size>>>>;
+		template<class T_p>
+		using Types_sequence_to_numbered_elements = typ::p_select<Non_void, typ::type_of<Transform_to_numbered_elemnts<T_p, std::make_index_sequence<T_p::size>>>>;
 
-		template<class p>
-		struct pro_numeration;
-		template<class ... pp>
-		struct pro_numeration<typ::Pack<pp...>>
+		template<class T_p>
+		struct Numbered_elements;
+		template<class ... T_v>
+		struct Numbered_elements<typ::Pack<T_v...>>
 			:uti::default_constructor,
-			pp...
+			T_v...
 		{
-			template<class l>
-			void for_each(l&& lam)
+			using uti::default_constructor::default_constructor;
+			Numbered_elements(const typ::type_of<T_v> & ... args) :T_v(args)...
+			{}
+
+			template<class Lambda>
+			void for_each(Lambda&& lambda)
 			{
-				auto d = { (lam(((pp&)(*this)).get())    ,0)...,0 };
+				(lambda(((T_v&)(*this)).get()),...);
 			}
-			template<class l>
-			auto expand(l&& lam)
+			template<class Lambda>
+			auto expand(Lambda&& lambda)
 			{
-				return lam(pp::get()...);
+				return lambda(T_v::get()...);
 			}
-			template<class l>
-			auto expand(l&& lam)const
+			template<class Lambda>
+			auto expand(Lambda&& lambda)const
 			{
-				return lam(pp::get()...);
+				return lambda(T_v::get()...);
 			}
 
-			pro_numeration(const typ::type_of<pp> & ... args) :pp(args)...
-			{}
-			using uti::default_constructor::default_constructor;
 		};
 	}
 
 
-	template<class ... types_v>
+	template<class ... Types_v>
 	struct Numeration
-		:detail::pro_numeration<detail::Types_sequence_to_numbered_elements<typ::Pack<types_v...>>>
+		:detail::Numbered_elements<detail::Types_sequence_to_numbered_elements<typ::Pack<Types_v...>>>
 	{
-		using base_type = detail::pro_numeration<detail::Types_sequence_to_numbered_elements<typ::Pack<types_v...>>>;
-		using base_type::pro_numeration;
-		using types_p = typ::Pack<types_v...>;
+		using base_type = detail::Numbered_elements<detail::Types_sequence_to_numbered_elements<typ::Pack<Types_v...>>>;
+		using base_type::Numbered_elements;
+		using Types_p = typ::Pack<Types_v...>;
 
 		template<size_t i >
-		using component = uti::Numbered_component< typ::p_element<i, types_p>, i>;
-		template<class t >
-		using index = typ::detail::P_index<types_p, t>;
+		using Component = uti::Numbered_component< typ::p_element<i, Types_p>, i>;
+		template<class T >
+		using Component_index_t = typ::detail::P_index<Types_p, T>;
 
-		static constexpr size_t size = types_p::size;
+		static constexpr size_t size = Types_p::size;
 
 		template<size_t i>
 		auto& get()
 		{
-			using component_type = component< i>;
+			using component_type = Component< i>;
 			return this->component_type::get();
 		}
 		template<size_t i>
 		const auto& get() const
 		{
-			using component_type = component< i>;
+			using component_type = Component< i>;
 			return this->component_type::get();
 		}
-		template<class t>
-		std::enable_if_t<typ::p_has<types_p, t>, t&>  get()
+		template<class T>
+		std::enable_if_t<typ::p_has<Types_p, T>, T&>  get()
 		{
-			using component_type = component<typ::p_index< types_p, t>>;
+			using component_type = Component<typ::p_index< Types_p, T>>;
 			return this->component_type::get();
 		}
-		template<class t>
-		std::enable_if_t<typ::p_has<types_p, t>, const t&>  get()const
+		template<class T>
+		std::enable_if_t<typ::p_has<Types_p, T>, const T&>  get()const
 		{
-			using component_type = component<typ::p_index< types_p, t>>;
+			using component_type = Component<typ::p_index< Types_p, T>>;
 			return this->component_type::get();
 		}
 

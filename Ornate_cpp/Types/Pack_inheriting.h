@@ -5,50 +5,39 @@ namespace typ
 {
 	namespace detail
 	{
-		template<class s, class p> struct BaseTypes;
-		template<class s, class b1, class ...bb> struct BaseTypes<s, Pack<b1, bb...>>
+		template<class Derived, class Potential_base_types_p>
+		struct P_base_types;
+		template<class Derived, class T, class ...T_v>
+		struct P_base_types<Derived, Pack<T, T_v...>>
 		{
-			using type = std::conditional_t<std::is_base_of_v<b1, s>, p_merge<Pack<b1>, typename BaseTypes<s, Pack<bb...>>::type>, typename BaseTypes<s, Pack<bb...>>::type>;
+			using Inner_pack = typename P_base_types<Derived, Pack<T_v...>>::type;
+			using type = std::conditional_t<std::is_base_of_v<T, Derived>, p_merge<Pack<T>, Inner_pack>, Inner_pack>;
 		};
-		template<class s> struct BaseTypes<s, Pack<>>
+		template<class Derived >
+		struct P_base_types<Derived, Pack<>>
 		{
 			using type = Pack<>;
 		};
 
-		template<class s, class p> struct InheritingTypes;
-		template<class s, class b1, class ...bb> struct InheritingTypes<s, Pack<b1, bb...>>
+		template<class Base_type, class Potential_derived_types_p>
+		struct P_inheriting_types;
+		template<class Base_type, class T, class ...T_v>
+		struct P_inheriting_types<Base_type, Pack<T, T_v...>>
 		{
-			using type = std::conditional_t<std::is_base_of_v< s, b1>, p_merge<Pack<b1>, typename InheritingTypes<s, Pack<bb...>>::type>, typename InheritingTypes<s, Pack<bb...>>::type>;
+			using Inner_pack = typename P_inheriting_types<Base_type, Pack<T_v...>>::type > ;
+			using type = std::conditional_t<std::is_base_of_v< Base_type, T>, p_merge<Pack<T>, Inner_pack>, Inner_pack>;
 		};
-		template<class s> struct InheritingTypes<s, Pack<>>
+		template<class Base_type>
+		struct P_inheriting_types<Base_type, Pack<>>
 		{
 			using type = Pack<>;
-		};
-
-		template< class t, class ... tt> struct BaseType;
-		template< class t, class t1, class ... tt> struct BaseType< t, t1, tt...>
-		{
-			using type = typename std::conditional< std::is_same_v<t, typename InheritingTypes<t1, t>::type>, t1, typename BaseType<t, tt...>::type >::type;
-		};
-		template< class t1, class ... tt> struct BaseType< Pack<t1, tt...>>
-		{
-			using type = t1;
-		};
-
-		template<class t> struct BaseTypeOfPack;
-		template<class ... tt> struct BaseTypeOfPack<Pack<tt...>>
-		{
-			using type = typename BaseType<Pack<tt...>, tt...>::type;
 		};
 	}
 
-	template<class p>
-	using baseType = typename detail::BaseTypeOfPack<p>::type;
+	template<class Derived, class Potential_base_types_p>
+	using p_base_types = typename detail::P_base_types<Derived, Potential_base_types_p>::type;
 
-	template<class s, class p>
-	using base_types = typename detail::BaseTypes<s, p>::type;
-
-	template<class s, class p>
-	using inheriting_types = typename detail::InheritingTypes<s, p>::type;
+	template<class Base_type, class Potential_derived_types_p>
+	using p_inheriting_types = typename detail::P_inheriting_types<Base_type, Potential_derived_types_p>::type;
 
 }

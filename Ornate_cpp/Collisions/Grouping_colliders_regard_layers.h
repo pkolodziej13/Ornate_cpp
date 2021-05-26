@@ -138,6 +138,7 @@ namespace col
 			});
 		}
 
+	private:
 		Kinds elements;
 		std::unordered_set<key_type> currently_used_keys;
 	};

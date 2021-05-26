@@ -6,19 +6,19 @@
 
 namespace agg
 {
-	template<class ... args>
+	template<class ... Args_v>
 	struct Invoker :uti::non_replicable
 	{
-		using this_type = Invoker<args...>;
-		Loose_element_shared<std::function<void(args...)>> Add(const std::function<void(args...)>& function)
+		using this_type = Invoker<Args_v...>;
+		Loose_element_shared<std::function<void(Args_v...)>> add(const std::function<void(Args_v...)>& function)
 		{
-			return to_invoke.Create_as_last(function);
+			return to_invoke.create_as_last(function);
 		}
-		void invoke(args ... arguments)
+		void invoke(Args_v ... arguments)
 		{
-			for (auto& ti : to_invoke.Save_range())
+			for (auto& function : to_invoke.save_range())
 			{
-				ti(arguments...);
+				function(arguments...);
 			}
 		}
 		bool empty()
@@ -27,11 +27,11 @@ namespace agg
 		}
 		void steal_from(this_type& to_steal)
 		{
-			to_invoke.Link_chain_as_previous(to_steal.to_invoke);
+			to_invoke.link_chain_as_previous(to_steal.to_invoke);
 			to_steal.to_invoke.detach();
 		}
 	private:
-		Loose_list<std::function<void(args...)>> to_invoke;
+		Loose_list<std::function<void(Args_v...)>> to_invoke;
 	};
 
 }

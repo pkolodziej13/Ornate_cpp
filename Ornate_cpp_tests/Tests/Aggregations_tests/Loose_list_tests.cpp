@@ -15,13 +15,13 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
-		auto a3 = list.Create_as_last(3);
-		auto a4 = list.Create_as_last(4);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
+		auto a3 = list.create_as_last(3);
+		auto a4 = list.create_as_last(4);
 
 		int it = 1;
-		for (auto& a : list.Fast_range())
+		for (auto& a : list.fast_range())
 		{
 			Assert::AreEqual(a, it);
 			it++;
@@ -31,16 +31,16 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
 		{
-			auto a3 = list.Create_as_last(3);
+			auto a3 = list.create_as_last(3);
 		}
-		auto a4 = list.Create_as_last(4);
+		auto a4 = list.create_as_last(4);
 
 		int it = 0;
 		std::vector<int> expected{ 1,2,4 };
-		for (auto& a : list.Save_range())
+		for (auto& a : list.save_range())
 		{
 			Assert::AreEqual(a, expected[it]);
 			it++;
@@ -50,13 +50,13 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
-		auto a3 = list.Create_as_last(3);
-		auto a4 = list.Create_as_last(4);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
+		auto a3 = list.create_as_last(3);
+		auto a4 = list.create_as_last(4);
 
 		int it = 1;
-		for (auto& a : list.Save_range())
+		for (auto& a : list.save_range())
 		{
 			Assert::AreEqual(a, it);
 			it++;
@@ -66,12 +66,12 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
-		auto a3 = list.Create_as_last(3);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
+		auto a3 = list.create_as_last(3);
 
 		int i = 0;
-		for (auto& a : list.Save_range())
+		for (auto& a : list.save_range())
 		{
 			if (i == 0)
 			{
@@ -94,17 +94,17 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
-		auto a3 = list.Create_as_last(3);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
+		auto a3 = list.create_as_last(3);
 		auto a4 = agg::Loose_element<int>(4);
 		auto a5 = std::make_shared<agg::Loose_element<int> >(5);
-		a4.Link_chain_as_previous(*a5);
-		list.Link_chain_as_next(a4);
+		a4.link_chain_as_previous(*a5);
+		list.link_chain_as_next(a4);
 
 		int it = 0;
 		std::array<int, 5> expected{ 4,5,1,2,3 };
-		for (auto& a : list.Save_range())
+		for (auto& a : list.save_range())
 		{
 			Assert::AreEqual(a, expected[it]);
 			it++;
@@ -114,17 +114,17 @@ public:
 	{
 		agg::Loose_list<int> list;
 
-		auto a1 = list.Create_as_last(1);
-		auto a2 = list.Create_as_last(2);
-		auto a3 = list.Create_as_last(3);
+		auto a1 = list.create_as_last(1);
+		auto a2 = list.create_as_last(2);
+		auto a3 = list.create_as_last(3);
 		auto a4 = agg::Loose_element<int>(4);
 		auto a5 = std::make_shared<agg::Loose_element<int> >(5);
-		a4.Link_chain_as_previous(*a5);
-		list.Link_chain_as_previous(a4);
+		a4.link_chain_as_previous(*a5);
+		list.link_chain_as_previous(a4);
 
 		int it = 0;
 		std::array<int, 5> expected{ 1,2,3, 4,5 };
-		for (auto& a : list.Save_range())
+		for (auto& a : list.save_range())
 		{
 			Assert::AreEqual(a, expected[it]);
 			it++;

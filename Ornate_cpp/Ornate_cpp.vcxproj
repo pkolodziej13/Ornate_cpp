@@ -184,7 +184,7 @@
     <ClInclude Include="Math\Vector_component.h" />
     <ClInclude Include="Math\View_matrix.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\bimap.h" />
+    <ClInclude Include="Aggregations\Bimap.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Dense.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Doubly_linked_list_node.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Invoker.h" />
@@ -236,7 +236,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Math\Integer_operations.h" />
     <ClInclude Include="Math\Projection.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Math\Multiplier_deduction.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Math\rec_frame.h" />
+    <ClInclude Include="Math\Rectangular_frame.h" />
     <ClInclude Include="Math\Rotation_matrix_3d.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Global_instance.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Individual.h" />
@@ -251,19 +251,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_common.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_final.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_individual_base.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_mutual.h" />
+    <ClInclude Include="Objects\Relation_asymmetry.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_profiled.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_indexed.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_dense_list.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_map.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_pool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_single.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_symetric.h" />
+    <ClInclude Include="Objects\Relation_symmetry.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_utilities.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_value_manager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_events.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_value.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Standard_relations.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Value_possesing.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Types\cpp_utility.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Types\Diagnosing.h" />
@@ -290,19 +288,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\holder_ptr.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Index.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Input_responsibility.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Iterating_with_group.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\loops.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Multidimensional_iterator.h" />
+    <ClInclude Include="Utilities\Loops.h" />
+    <ClInclude Include="Utilities\Multidimensional_range.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Natural_optional.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Non_replicable.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\No_responsibility.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_components.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\numbered_inheritance.h" />
+    <ClInclude Include="Utilities\Numbered_inheritance.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_operations.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Number_range.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numeration.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Optional_member_variable.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\pointers.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Programmer_responsibility.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Range_for_loop.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Representatives.h" />
@@ -312,9 +308,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Utility.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_cell_deduction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_computing_cell.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\values_network.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_provider_and_receptor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Variant_dynamic.h" />
+    <ClInclude Include="Utilities\shared_ptr_inplacement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

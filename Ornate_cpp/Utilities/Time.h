@@ -13,13 +13,13 @@ namespace uti
 	{
 		Time_checkpoint()
 		{
-			last_point = std::chrono::system_clock::now();
+			start_point = std::chrono::system_clock::now();
 		}
 		auto check_time()
 		{
-			return (std::chrono::system_clock::now() - last_point).count();
+			return (std::chrono::system_clock::now() - start_point).count();
 		}
 	private:
-		std::chrono::system_clock::time_point last_point;
+		std::chrono::system_clock::time_point start_point;
 	};
 }

@@ -3,33 +3,32 @@
 #include "Arithmetic_additable.h"
 #include "Arithmetic_multiplicable.h"
 
-
 namespace mth
 {
-	template <class internal_type>
-	struct norm:
-		Fixed_point_number<internal_type,std::numeric_limits<internal_type>::max()>,
-		mth::Arithmetic_additable<norm<internal_type>, Minimal_float<internal_type> >,
-		mth::Arithmetic_multiplicable<norm<internal_type>, Minimal_float<internal_type> >
+	template <class Internal_type>
+	struct Normalized:
+		Fixed_point_number<Internal_type,std::numeric_limits<Internal_type>::max()>,
+		mth::Arithmetic_additable<Normalized<Internal_type>, Minimal_float<Internal_type> >,
+		mth::Arithmetic_multiplicable<Normalized<Internal_type>, Minimal_float<Internal_type> >
 	{
-		using this_type = norm<internal_type>;
-		using base_type = Fixed_point_number<internal_type, std::numeric_limits<internal_type>::max()>;
+		using this_type = Normalized<Internal_type>;
+		using base_type = Fixed_point_number<Internal_type, std::numeric_limits<Internal_type>::max()>;
 		using real_type = typename base_type::Minimal_reqired_float;
-		using arithmetic_additable = mth::Arithmetic_additable<this_type, Minimal_float<internal_type> >;
-		using arithmetic_multiplicable = mth::Arithmetic_multiplicable<this_type, Minimal_float<internal_type> >;
+		using arithmetic_additable = mth::Arithmetic_additable<this_type, Minimal_float<Internal_type> >;
+		using arithmetic_multiplicable = mth::Arithmetic_multiplicable<this_type, Minimal_float<Internal_type> >;
 
-		norm() = default;
-		norm( real_type  re)
+		Normalized() = default;
+		Normalized(real_type const& re)
 			:base_type( re)
 		{}
-		norm(const base_type & fixed_point)
+		Normalized(base_type const & fixed_point)
 			:base_type(fixed_point)
 		{}
-		static this_type from_internal(const internal_type& t)
+		static this_type from_internal(const Internal_type& t)
 		{
 			return this_type(base_type(0, t));
 		}
-		this_type & operator =(const real_type& f)
+		this_type & operator =(real_type const& f)
 		{
 			this->set(f);
 			return *this;
@@ -48,18 +47,18 @@ namespace mth
 		{
 			return operation(static_cast<const base_type &>(a), b);
 		}
-		void set_internal(const internal_type & in)
+		void set_internal(const Internal_type & in)
 		{
 			this->set( 0, in);
 		}
-		const internal_type & get_internal()const
+		const Internal_type & get_internal()const
 		{
 			return this->data();
 		}
 	};
 
-	template<class t>
-	struct is_norm:std::false_type{};
-	template<class internal_type>
-	struct is_norm<norm<internal_type>> :std::true_type{};
+	template<class T>
+	struct is_normalized :std::false_type{};
+	template<class Internal_type>
+	struct is_normalized<Normalized<Internal_type>> :std::true_type{};
 }

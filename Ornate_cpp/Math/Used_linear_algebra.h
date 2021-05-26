@@ -6,16 +6,16 @@ namespace mth
 {
 	using namespace mth::linear_algebra;
 
-	template<class t>
+	template<class T>
 	struct Vector_decomposition
 	{
 		static constexpr size_t dimension = 1;
-		using element_type = t;
+		using element_type = T;
 	};
-	template<class t, size_t dim>
-	struct Vector_decomposition<g_vec<t, dim>>
+	template<class T, size_t size_value>
+	struct Vector_decomposition<g_vec<T, size_value>>
 	{
-		static constexpr size_t dimension = dim;
-		using element_type = t;
+		static constexpr size_t dimension = size_value;
+		using element_type = T;
 	};
 }

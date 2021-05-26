@@ -22,7 +22,7 @@ namespace col
 	{
 		friend Engine_object_relation;
 		friend Engine_braid_fiber;
-		friend Events_reqirement::Events_caller;
+		friend Events_requirement::Events_caller;
 
 		virtual void relate_with_object(T & object) = 0;
 		virtual void unrelate_object(T& object) = 0;
@@ -83,7 +83,7 @@ namespace col
 		:uti::variadic_inheritance< Engine_braid_fiber<Objects_v, Engine_braid<typ::Pack<Objects_v...>, Coliders_p>>...>,
 		Engine_relation_side<Engine_braid<typ::Pack<Objects_v...>, Coliders_p>>,
 		Rejestring_colliders_considering_objects_number<Engine_braid<typ::Pack<Objects_v...>, Coliders_p>,
-			Engine_layers_comparer< Objects_v...>, Colliders_rejestr<Coliders_p>::template rejestr>,
+			Engine_layers_comparer< Objects_v...>, Colliders_rejestr<Coliders_p>::template Rejestr>,
 		Contacts_handling<Engine_braid<typ::Pack<Objects_v...>, Coliders_p>,Engine_layers_comparer< Objects_v...>>,
 		Engine_unified_access_to_comparasion_implementation< Engine_layers_comparer< Objects_v...>, Object_unified>
 	{
@@ -103,7 +103,7 @@ namespace col
 			{
 				if (collider1.is_colliding(collider2))
 				{
-					this->set_contacs(connections_of_keys, collider1.objects, collider2.objects);
+					this->set_contacs(connections_of_keys, collider1.get_objects(), collider2.get_objects());
 				}
 			});
 		}

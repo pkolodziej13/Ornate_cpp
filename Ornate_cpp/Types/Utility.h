@@ -2,63 +2,65 @@
 #include <type_traits>
 #include <typeinfo>
 
-
 namespace typ
 {
-	template<class t>
-	using type_of = typename t::type;
+	template<class T>
+	using type_of = typename T::type;
 
-	template<class t>
+	template<class T>
 	struct Overtype
 	{
-		using type = t;
+		using type = T;
 	};
 
-	template<class base, class derivered>
-	using is_base_or_same = std::integral_constant<bool, std::is_base_of_v<base, derivered> || std::is_same_v<base, derivered>>;
-	template<class base, class derivered>
-	constexpr bool is_base_or_same_v = is_base_or_same<base, derivered>::value;
+	template<class Base, class Derivered>
+	using is_base_or_same = std::integral_constant<bool, std::is_base_of_v<Base, Derivered> || std::is_same_v<Base, Derivered>>;
+	template<class Base, class Derivered>
+	constexpr bool is_base_or_same_v = is_base_or_same<Base, Derivered>::value;
 
-	template< class t, class = void >
+	template< class T, class = void >
 	struct is_type_existing :std::false_type {};
-	template<class t>
-	struct  is_type_existing<t, decltype(typeid(t), void())> :std::true_type
+	template<class T>
+	struct  is_type_existing<T, decltype(typeid(T), void())> :std::true_type
 	{
 	};
-	template<class t>
-	using type_existance_t = std::enable_if_t< is_type_existing<t>::value>;
-
-
-	template <template <typename...> class C, typename...Ts>
-	std::true_type is_template_base_of_impl(const C<Ts...>*);
-
-	template <template <typename...> class C>
-	std::false_type is_template_base_of_impl(...);
-
-	template < template <typename...> class C, typename T>
-	using is_template_base_of = decltype(is_template_base_of_impl<C>(std::declval<T*>()));
+	template<class T>
+	using type_existance_t = std::enable_if_t< is_type_existing<T>::value>;
 
 
 	namespace detail
 	{
-		template<class checked, class kind_trial>
+		template <template <typename...> class Template_type, typename...T_v>
+		std::true_type is_template_base_of_impl(const Template_type<T_v...>*);
+
+		template <template <typename...> class Template_type>
+		std::false_type is_template_base_of_impl(...);
+	}
+
+	template < template <typename...> class Template_type, typename T>
+	using is_template_base_of = decltype(detail::is_template_base_of_impl<Template_type>(std::declval<T*>()));
+
+
+	namespace detail
+	{
+		template<class Checked, class Kind_trial>
 		struct kind_recognizer
 		{
-			template<class t, class = decltype(kind_trial::kind_trial(std::declval<checked&>()))>
+			template<class T, class = decltype(Kind_trial::kind_trial(std::declval<Checked&>()))>
 			static std::true_type type_trial(int);
-			template<class t>
+			template<class T>
 			static std::false_type type_trial(...);
 
-			using type = decltype(type_trial<checked>(0));
+			using type = decltype(type_trial<Checked>(0));
 			static constexpr bool value = type::value;
 		};
 	}
 
-	template<class checked, class kind_trial>
-	constexpr bool is_kind = detail::kind_recognizer<checked, kind_trial>::value;
+	template<class Checked, class Kind_trial>
+	constexpr bool is_kind = detail::kind_recognizer<Checked, Kind_trial>::value;
 
-	template<class checked,class kind_trial>
-	using kind_of = decltype(kind_trial::kind_trial(std::declval<checked>()));
+	template<class Checked,class Kind_trial>
+	using kind_of = decltype(Kind_trial::kind_trial(std::declval<Checked>()));
 
 
 	template<class T1, class T2>

@@ -1,7 +1,6 @@
 #pragma once
+#include "Mutual_relation_resolver.h"
 #include "Relation_individual_base.h"
-#include "Relation_mutual.h"
-#include "Relation_symetric.h"
 namespace obj
 {
 	template<class Core_relation>
@@ -10,7 +9,7 @@ namespace obj
 		using this_type = Relation_final<Core_relation>;
 		using base_type = typename Core_relation::template Relation_core<Relation_final<Core_relation>, Relation_final<Core_relation>>;
 
-		template<size_t I> using Individual = typename Related_base_undeductible< this_type>::template Related_base<I>;
+		template<size_t I> using Individual = Relation_individual_base<this_type, I>;
 
 
 		using base_type::create_relation;
@@ -29,8 +28,4 @@ namespace obj
 		friend Mutual_relation_resolver<this_type>;
 	};
 
-	template<class Relation1_type, class Relation2_type, class T1, class T2, class Value = void, Value_possesing possesing = Value_possesing::optimal>
-	using Relation_mutual = Relation_final<Relation_two_side<Relation1_type, Relation2_type ,T1 ,T2 ,Value ,possesing>>;
-	template<class Relation1_type, class Relation2_type, class T1, class T2, class Value = void, Value_possesing possesing = Value_possesing::optimal>
-	using Relation_symetric = Relation_final<Relation_symetric_wings<Relation1_type, Relation2_type, T1, T2, Value, possesing>>;
 }

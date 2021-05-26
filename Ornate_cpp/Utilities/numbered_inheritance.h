@@ -1,44 +1,45 @@
 #pragma once
 #include <Types/Pack.h>
+#include "Utility.h"
 
 namespace uti
 {
-	template<class t, size_t I>
-	struct inherited_on_number :t
+	template<class T, size_t I>
+	struct Inherited_on_number :T
 	{
-		using t::t;
+		using T::T;
 	};
-	template<class t_p, class = std::make_index_sequence<t_p::size>>
-	struct numbered_inheritance;
-	template<class ... t_v, size_t ... I_v>
-	struct numbered_inheritance<typ::Pack<t_v...>, std::index_sequence<I_v...>>
-		:uti::default_constructor, inherited_on_number<t_v, I_v>...
+	template<class T_p, class = std::make_index_sequence<T_p::size>>
+	struct Numbered_inheritance;
+	template<class ... T_v, size_t ... I_v>
+	struct Numbered_inheritance<typ::Pack<T_v...>, std::index_sequence<I_v...>>
+		:uti::default_constructor, Inherited_on_number<T_v, I_v>...
 	{
-		using types = typ::Pack<t_v...>;
+		using Types_p = typ::Pack<T_v...>;
 		using default_constructor::default_constructor;
-		template<class ... t_a_v>
-		numbered_inheritance(t_a_v && ... providers)
-			:inherited_on_number<t_v, I_v>{ std::forward<t_a_v>(providers) }...
+		template<class ... Arguments_types_v>
+		Numbered_inheritance(Arguments_types_v && ... arguments_v)
+			:Inherited_on_number<T_v, I_v>{ std::forward<Arguments_types_v>(arguments_v) }...
 		{}
-		template<class t>
-		t& get()
+		template<class T>
+		T& get()
 		{
-			return static_cast<inherited_on_number<t, typ::p_index<types, t>>&>(*this);
+			return static_cast<Inherited_on_number<T, typ::p_index<Types_p, T>>&>(*this);
 		}
-		template<class t>
-		const t& get()const
+		template<class T>
+		const T& get()const
 		{
-			return static_cast<const inherited_on_number<t, typ::p_index<types, t>>&>(*this);
-		}
-		template<size_t i>
-		typ::p_element<i, types>& get()
-		{
-			return static_cast<inherited_on_number<typ::p_element<i, types>, i>&>(*this);
+			return static_cast<const Inherited_on_number<T, typ::p_index<Types_p, T>>&>(*this);
 		}
 		template<size_t i>
-		const typ::p_element<i, types>& get()const
+		typ::p_element<i, Types_p>& get()
 		{
-			return static_cast<const inherited_on_number<typ::p_element<i, types>, i>&>(*this);
+			return static_cast<Inherited_on_number<typ::p_element<i, Types_p>, i>&>(*this);
+		}
+		template<size_t i>
+		const typ::p_element<i, Types_p>& get()const
+		{
+			return static_cast<const Inherited_on_number<typ::p_element<i, Types_p>, i>&>(*this);
 		}
 	};
 }

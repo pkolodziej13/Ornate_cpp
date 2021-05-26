@@ -1,41 +1,42 @@
 #pragma once
-#include <Utilities/pointers.h>
+#include <Utilities/containing_shared_ptr.h>
+
 #include "Ordered_tree.h"
 
 namespace agg
 {
-	template<class suggested>
+	template<class Suggested>
 	struct Ordered_tree_view
 	{
-		using this_type = Ordered_tree_view<suggested>;
-		using decayed_type = std::decay_t<suggested>;
+		using this_type = Ordered_tree_view<Suggested>;
+		using decayed_type = std::decay_t<Suggested>;
 
-		struct sugested_node_base
+		struct Sugested_node_base
 		{
-			virtual uti::containing_shared_ptr<sugested_node_base> add_child() = 0;
-			virtual suggested get() = 0;
+			virtual uti::containing_shared_ptr<Sugested_node_base> add_child() = 0;
+			virtual Suggested get() = 0;
 		};
 
-		template<class t, class = std::enable_if_t<std::is_convertible_v<t&, suggested>>>
-		Ordered_tree_view(Ordered_tree<t>& to_manipulate)
-			:node_manipulator(std::make_shared<sugested_node_concrete<t>>(to_manipulate))
+		template<class T_specific, class = std::enable_if_t<std::is_convertible_v<T_specific&, Suggested>>>
+		Ordered_tree_view(Ordered_tree<T_specific>& to_manipulate)
+			:node_manipulator(std::make_shared<Sugested_node_concrete<T_specific>>(to_manipulate))
 			, object(to_manipulate.get())
 		{
 
 		}
-		Ordered_tree_view(uti::containing_shared_ptr<sugested_node_base> child)
+		Ordered_tree_view(uti::containing_shared_ptr<Sugested_node_base> child)
 			:node_manipulator(child), object(child->get())
 		{
 
 		}
-		template<class t, class = std::enable_if_t<std::is_convertible_v<t&, suggested>>>
-		Ordered_tree_view(Ordered_tree_view<t>& manipulated)
-			: node_manipulator(std::make_shared<sugested_node_proxy<t>>(manipulated))
+		template<class T_specific, class = std::enable_if_t<std::is_convertible_v<T_specific&, Suggested>>>
+		Ordered_tree_view(Ordered_tree_view<T_specific>& manipulated)
+			: node_manipulator(std::make_shared<Sugested_node_proxy<T_specific>>(manipulated))
 			, object(manipulated.get())
 		{
 
 		}
-		Ordered_tree_view(Ordered_tree_view<suggested>& manipulated)
+		Ordered_tree_view(Ordered_tree_view<Suggested>& manipulated)
 			: node_manipulator(manipulated.node_manipulator)
 			, object(manipulated.object)
 		{
@@ -46,52 +47,52 @@ namespace agg
 		{
 			return this_type(node_manipulator->add_child());
 		}
-		suggested& get()
+		Suggested& get()
 		{
 			return object;
 		};
 		decayed_type* operator->() { return &get(); }
 
 	private:
-		template< class realized>
-		struct sugested_node_concrete :sugested_node_base
+		template< class Realized>
+		struct Sugested_node_concrete :Sugested_node_base
 		{
-			using this_type = sugested_node_concrete< realized>;
+			using this_type = Sugested_node_concrete< Realized>;
 
-			sugested_node_concrete(Ordered_tree<realized>& node)
+			Sugested_node_concrete(Ordered_tree<Realized>& node)
 				:node(node)
 			{
 			}
-			virtual suggested get() { return node.get(); }
-			Ordered_tree<realized>& node;
-			uti::containing_shared_ptr<sugested_node_base>  add_child()
+			virtual Suggested get() { return node.get(); }
+			Ordered_tree<Realized>& node;
+			uti::containing_shared_ptr<Sugested_node_base>  add_child()
 			{
 				auto& added = node.add_child();
 				return std::make_shared<this_type>(added);
 			}
 		};
-		template< class realized>
-		struct sugested_node_proxy :sugested_node_base
+		template< class Realized>
+		struct Sugested_node_proxy :Sugested_node_base
 		{
-			using this_type = sugested_node_proxy< realized>;
+			using this_type = Sugested_node_proxy< Realized>;
 
-			sugested_node_proxy(Ordered_tree_view<realized>& node)
+			Sugested_node_proxy(Ordered_tree_view<Realized>& node)
 				:node(node)
 			{
 			}
-			virtual suggested get()
+			virtual Suggested get()
 			{
 				return node.get();
 			}
-			Ordered_tree_view<realized> node;
-			uti::containing_shared_ptr<sugested_node_base> add_child()
+			Ordered_tree_view<Realized> node;
+			uti::containing_shared_ptr<Sugested_node_base> add_child()
 			{
 				auto added = node.add_child();
 				return std::make_shared<this_type>(added);
 			}
 		};
 
-		suggested object;
-		uti::containing_shared_ptr<sugested_node_base> node_manipulator;
+		Suggested object;
+		uti::containing_shared_ptr<Sugested_node_base> node_manipulator;
 	};
 }

@@ -11,18 +11,18 @@ public:
 	template<class T>
 	void test_for_type()
 	{
-		mth::norm<T> zero(0);
+		mth::Normalized<T> zero(0);
 
-		mth::norm<T> half = zero + 0.5;
+		mth::Normalized<T> half = zero + 0.5;
 		Assert::IsTrue(mth::are_similar(half.as_floating(), 0.5,0.01));
 
-		mth::norm<T> quarter = half / 2;
+		mth::Normalized<T> quarter = half / 2;
 		Assert::IsTrue(mth::are_similar(quarter.as_floating(), 0.25, 0.01));
 
-		mth::norm<T> unit = quarter * 4;
+		mth::Normalized<T> unit = quarter * 4;
 		Assert::IsTrue(mth::are_similar(unit.as_floating(), 1, 0.04));
 
-		mth::norm<T> half2 = unit - 0.5f;
+		mth::Normalized<T> half2 = unit - 0.5f;
 		Assert::IsTrue(mth::are_similar(half2.as_floating(), 0.5, 0.04));
 	}
 

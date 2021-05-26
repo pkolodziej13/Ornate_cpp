@@ -21,26 +21,26 @@ namespace mth::geo3
 		Direction(Normalized_mark, const vec3& direction)
 			:direction(direction)
 		{}
-		vec3 operator *(float v)const
+		vec3 operator *(float scalar)const
 		{
-			return direction * v;
+			return direction * scalar;
 		}
-		vec3 operator /(float v)const
+		vec3 operator /(float scalar)const
 		{
-			return direction / v;
+			return direction / scalar;
 		}
 		Direction operator-()const
 		{
 			return Direction(Normalized_mark{}, -direction);
 		}
 
-		inline float dot(const vec3& value)const
+		inline float dot(const vec3& right)const
 		{
-			return direction.dot(value);
+			return direction.dot(right);
 		}
-		vec3 cross(const vec3& value)const
+		vec3 cross(const vec3& right)const
 		{
-			return mth::cross(direction, value);
+			return mth::cross(direction, right);
 		}
 		vec3 perpendicular(const vec3& vec)const
 		{

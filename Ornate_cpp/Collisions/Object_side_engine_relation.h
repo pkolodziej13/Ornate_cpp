@@ -15,7 +15,7 @@ namespace col
 	struct Object_side_engine_relation
 	{
 		using key_to_this = void;
-		using direct_complexity = uti::constant_complexity<1>;
+		using direct_complexity = uti::Constant_complexity<1>;
 
 		struct Object_individual
 		{
@@ -37,12 +37,12 @@ namespace col
 
 		private:
 			friend Engine_object_relation;
-			template<class F>
-			inline void for_each(F&& lam)
+			template<class Lambda>
+			inline void for_each(Lambda&& lambda)
 			{
 				if (container.connected())
 				{
-					lam(*container.related, static_cast<const Concomitant&>(container));
+					lambda(*container.related, static_cast<const Concomitant&>(container));
 				}
 			}
 
@@ -70,7 +70,7 @@ namespace col
 				container.related = nullptr;
 			}
 
-			uti::constant_complexity<1> finding_complexity()
+			uti::Constant_complexity<1> finding_complexity()
 			{
 				return {};
 			}

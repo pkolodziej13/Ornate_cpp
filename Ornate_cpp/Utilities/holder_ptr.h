@@ -4,54 +4,53 @@
 #include <Types/Utility.h>
 
 #include "Responsibility.h"
+
 namespace uti
 {
-	template<class t>
+	template<class T>
 	struct holder_ptr
 	{
-		using this_type = holder_ptr<t>;
+		using this_type = holder_ptr<T>;
 		holder_ptr()
 		{
 			direct = 0;
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		holder_ptr(t2* ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		holder_ptr(T_specific* ptr)
 		{
 			direct = ptr;
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		holder_ptr(std::shared_ptr<t2> ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		holder_ptr(std::shared_ptr<T_specific> ptr)
 			:owner(ptr), direct(ptr.get())
 		{
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		holder_ptr(holder_ptr<t2> ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		holder_ptr(holder_ptr<T_specific> ptr)
 			: owner(ptr.owner), direct(ptr.direct)
 		{
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		this_type& operator =(t2* ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		this_type& operator =(T_specific* ptr)
 		{
 			owner.reset();
 			direct = ptr;
 			return *this;
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		this_type& operator = (std::shared_ptr<t2> ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		this_type& operator = (std::shared_ptr<T_specific> ptr)
 		{
 			owner = ptr;
 			direct = ptr.get();
 			return *this;
 		}
-		template<class t2, class = std::enable_if_t<typ::is_base_or_same_v<t, t2>>>
-		this_type& operator = (holder_ptr<t2> ptr)
+		template<class T_specific, class = std::enable_if_t<typ::is_base_or_same_v<T, T_specific>>>
+		this_type& operator = (holder_ptr<T_specific> ptr)
 		{
 			owner = ptr.owner;
 			direct = ptr.direct;
 			return *this;
 		}
-
-
 
 		operator bool()const
 		{
@@ -61,29 +60,29 @@ namespace uti
 		{
 			return direct == 0;
 		}
-		t* operator ->()
+		T* operator ->()
 		{
 			uti::Input_responsibility::verify([&]() {return direct != nullptr; }, "pointer cannot be empty");
 			return direct;
 		}
-		t& operator *()
+		T& operator *()
 		{
 			uti::Input_responsibility::verify([&]() {return direct!= nullptr; }, "pointer cannot be empty");
 			return *direct;
 		}
 
-		inline t* get()const
+		inline T* get()const
 		{
 			return direct;
 		}
 		void reset()
 		{
 			owner.reset();
-			direct.reset();
+			direct = nullptr;
 		}
 	private:
-		std::shared_ptr<t> owner;
-		t* direct;
+		std::shared_ptr<T> owner;
+		T* direct;
 	};
 
 }

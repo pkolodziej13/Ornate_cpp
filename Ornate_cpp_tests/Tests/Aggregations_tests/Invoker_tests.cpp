@@ -13,7 +13,7 @@ public:
 		agg::Invoker<> inv1;
 		agg::Invoker<> inv2;
 		int i = 0;
-		auto a = inv2.Add([&]() {i++; });
+		auto a = inv2.add([&]() {i++; });
 		inv1.steal_from(inv2);
 		inv1.invoke();
 		Assert::AreEqual(i,1);

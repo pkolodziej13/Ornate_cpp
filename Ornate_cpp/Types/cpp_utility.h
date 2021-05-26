@@ -1,40 +1,41 @@
 #pragma once
+#include <type_traits>
 
 namespace typ
 {
-	template<class type, class member_type>
-	using member_pointer = member_type type::*;
-	template<class t>
+	template<class Type, class Member_type>
+	using member_pointer = Member_type Type::*;
+	template<class T>
 	struct OwnersipOrganizer
 	{
-		using pointer_type = t*;
-		using pointer_to_const_type = const t*;
-		using copying_type = const t&;
-		using reference_type = t&;
+		using pointer_type = T*;
+		using pointer_to_const_type = const T*;
+		using copying_type = const T&;
+		using reference_type = T&;
 	};
-	template<class t>
-	struct OwnersipOrganizer<t&>
+	template<class T>
+	struct OwnersipOrganizer<T&>
 	{
-		using pointer_type = t*;
-		using pointer_to_const_type = const t*;
-		using copying_type = t&;
-		using reference_type = t&;
+		using pointer_type = T*;
+		using pointer_to_const_type = const T*;
+		using copying_type = T&;
+		using reference_type = T&;
 	};
 
-	template< class t>
+	template< class T>
 	struct removeMemberPointer;
-	template < class t, class base>
-	struct removeMemberPointer<base t::*>
+	template < class T, class Base>
+	struct removeMemberPointer<Base T::*>
 	{
-		using type = base;
+		using type = Base;
 	};
-	template <class t>
-	using remove_m_ptr = typename removeMemberPointer<t>::type;
+	template <class T>
+	using remove_m_ptr = typename removeMemberPointer<T>::type;
 
-	template <class t>
-	using removeMember = typename  removeMemberPointer<t>::type;
+	template <class T>
+	using removeMember = typename  removeMemberPointer<T>::type;
 
-	template<class t>
-	using is_non_const_lvalue_refeerence = std::integral_constant<bool, std::is_lvalue_reference_v<t> && (!std::is_const_v<std::remove_reference_t<t>>)>;
+	template<class T>
+	using is_non_const_lvalue_refeerence = std::integral_constant<bool, std::is_lvalue_reference_v<T> && (!std::is_const_v<std::remove_reference_t<T>>)>;
 
 }

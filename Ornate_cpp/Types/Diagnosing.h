@@ -3,10 +3,10 @@
 
 namespace typ
 {
-	template<class t>
+	template<class T>
 	constexpr auto expose_type_name()
 	{
-		return type_of<std::decay_t<decltype(std::declval<Overtype<t>>())>>::exposing;
-		using target = typename t::exposing_member;
+		return type_of<std::decay_t<decltype(std::declval<Overtype<T>>())>>::exposing;
+		using target = typename T::exposing_member;
 	}
 }

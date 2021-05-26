@@ -6,37 +6,37 @@ namespace typ
 	{
 		template<class P1, class P2>
 		struct P_merge;
-		template<class ... p1_v, class ... p2_v>
-		struct P_merge<Pack<p1_v...>, Pack<p2_v...>>
+		template<class ... T1_v, class ... T2_v>
+		struct P_merge<Pack<T1_v...>, Pack<T2_v...>>
 		{
-			using type = Pack<p1_v..., p2_v...>;
+			using type = Pack<T1_v..., T2_v...>;
 		};
 
-		template<class p> struct P_exclusion;
-		template<class p1, class ...pp> 
-		struct P_exclusion<Pack<p1, pp...>>
+		template<class P> struct P_exclusion;
+		template<class T, class ...T_v> 
+		struct P_exclusion<Pack<T, T_v...>>
 		{
-			using exluted = typename  P_exclusion<Pack<pp...>>::type;
-			using type = std::conditional_t<p_has<exluted,p1>,
+			using exluted = typename  P_exclusion<Pack<T_v...>>::type;
+			using type = std::conditional_t<p_has<exluted, T>,
 				exluted, 
-				typename P_merge<exluted, Pack<p1>>::type>;
+				typename P_merge<exluted, Pack<T>>::type>;
 		};
 		template<> 
 		struct P_exclusion<Pack<>>
 		{
 			using type = Pack<>;
 		};
-		template<size_t i, class p>
+		template<size_t i, class P>
 		struct P_delete_at_position;
-		template< class p, class ...pp>
-		struct P_delete_at_position<0, Pack<p, pp...>>
+		template< class T, class ...T_v>
+		struct P_delete_at_position<0, Pack<T, T_v...>>
 		{
-			using type = Pack<pp...>;
+			using type = Pack<T_v...>;
 		};
-		template<size_t i, class p, class ...pp>
-		struct P_delete_at_position<i, Pack<p, pp...>>
+		template<size_t i, class T, class ...T_v>
+		struct P_delete_at_position<i, Pack<T, T_v...>>
 		{
-			using type = typename P_merge < Pack<p>, typename P_delete_at_position<i - 1, Pack<pp...>>::type>::type;
+			using type = typename P_merge < Pack<T>, typename P_delete_at_position<i - 1, Pack<T_v...>>::type>::type;
 		};
 		template<size_t i>
 		struct P_delete_at_position<i, Pack<>>
@@ -44,62 +44,62 @@ namespace typ
 			using type = Pack<>;
 		};
 
-		template< class t, class p, class Enable = void>
+		template< class T, class P, class Enable = void>
 		struct P_delete_type;
-		template< class t, class p>
-		struct P_delete_type< t, p, std::enable_if_t<p_has<p, t  >>>
+		template< class T, class P>
+		struct P_delete_type< T, P, std::enable_if_t<p_has<P, T  >>>
 		{
-			using del_type = typename  P_delete_at_position< p_index<p,t>, p >::type;
-			using type = typename P_delete_type<t, p>::type;
+			using del_type = typename  P_delete_at_position< p_index<P, T>, P >::type;
+			using type = typename P_delete_type<T, P>::type;
 		};
-		template< class t, class p>
-		struct P_delete_type< t, p, std::enable_if_t<!p_has<p, t  >>>
+		template< class T, class P>
+		struct P_delete_type< T, P, std::enable_if_t<!p_has<P, T  >>>
 		{
-			using type = p;
+			using type = P;
 		};
 
-		template <class p1, class p2>
+		template <class P1, class P2>
 		struct P_conjunction;
-		template <class p1, class pc, class ... pp>
-		struct P_conjunction<p1, Pack<pc, pp...>>
+		template <class P1, class T, class ... T_v>
+		struct P_conjunction<P1, Pack<T, T_v...>>
 		{
-			using type = std::conditional_t<p_has<p1,pc>,
-				typename P_merge<Pack<pc>, typename P_conjunction<p1, Pack<pp...>>::type>::type, 
-				typename P_conjunction<p1, Pack<pp...>>::type>;
+			using type = std::conditional_t<p_has<P1, T>,
+				typename P_merge<Pack<T>, typename P_conjunction<P1, Pack<T_v...>>::type>::type,
+				typename P_conjunction<P1, Pack<T_v...>>::type>;
 		};
-		template <class p1>
-		struct P_conjunction<p1, Pack<>>
+		template <class P1>
+		struct P_conjunction<P1, Pack<>>
 		{
 			using type = Pack<>;
 		};
 
-		template< class det, class main_pack>
+		template<class Types_to_detach, class Pack_to_change>
 		struct P_detach;
-		template<class det, class m1, class ...mm>
-		struct P_detach< det, Pack<m1, mm...>  >
+		template<class Types_to_detach, class T, class ...T_v>
+		struct P_detach< Types_to_detach, Pack<T, T_v...>  >
 		{
-			using pom = typename P_detach<det, Pack<mm...>>::type;
-			using type = std::conditional_t<p_has<det, m1>, 
+			using pom = typename P_detach<Types_to_detach, Pack<T_v...>>::type;
+			using type = std::conditional_t<p_has<Types_to_detach, T>,
 				pom, 
-				typename P_merge<Pack<m1>, pom>::type>;
+				typename P_merge<Pack<T>, pom>::type>;
 		};
-		template<class det>
-		struct P_detach< det, Pack<>  >
+		template<class Types_to_detach>
+		struct P_detach< Types_to_detach, Pack<>  >
 		{
 			using type = Pack<>;
 		};
 
-		template<class numeric, size_t start>
+		template<class P, size_t start>
 		struct P_cut_first;
-		template<class n1, class ... nn, size_t start>
-		struct P_cut_first<Pack<n1, nn...>, start>
+		template<class T, class ... T_v, size_t start>
+		struct P_cut_first<Pack<T, T_v...>, start>
 		{
-			using type = typename P_cut_first<Pack<nn...>, start - 1>::type;
+			using type = typename P_cut_first<Pack<T_v...>, start - 1>::type;
 		};
-		template<class n1, class ... nn>
-		struct P_cut_first<Pack<n1, nn...>, 0>
+		template<class T, class ... T_v>
+		struct P_cut_first<Pack<T, T_v...>, 0>
 		{
-			using type = Pack<n1, nn...>;
+			using type = Pack<T, T_v...>;
 		};
 		template<>
 		struct P_cut_first<Pack<>, 0>
@@ -107,15 +107,15 @@ namespace typ
 			using type = Pack<>;
 		};
 
-		template<class numeric, size_t end>
+		template<class P, size_t end>
 		struct P_cut_last;
-		template<class n1, class ... nn, size_t end>
-		struct P_cut_last<Pack< n1, nn...>, end>
+		template<class T, class ... T_v, size_t end>
+		struct P_cut_last<Pack< T, T_v...>, end>
 		{
-			using type = typename P_merge<Pack<n1>, typename P_cut_last<Pack<nn...>, end - 1>::type>::type;
+			using type = typename P_merge<Pack<T>, typename P_cut_last<Pack<T_v...>, end - 1>::type>::type;
 		};
-		template<class n1, class ... nn>
-		struct P_cut_last<Pack<n1, nn...>, 0>
+		template<class T, class ... T_v>
+		struct P_cut_last<Pack<T, T_v...>, 0>
 		{
 			using type = Pack<>;
 		};
@@ -128,26 +128,26 @@ namespace typ
 	template<class P1, class P2>
 	using p_merge = typename detail::P_merge<P1, P2>::type;
 
-	template<class p>
-	using p_exclusion = typename detail::P_exclusion<p>::type;
+	template<class P>
+	using p_exclusion = typename detail::P_exclusion< P>::type;
 
-	template<size_t i, class p>
-	using p_delete_at = typename detail::P_delete_at_position<i, p>::type;
+	template<size_t i, class P>
+	using p_delete_at = typename detail::P_delete_at_position<i,P>::type;
 
-	template <class t, class p>
-	using p_delete_type = typename detail::P_delete_type<t, p>::type;
+	template <class T, class P>
+	using p_delete_type = typename detail::P_delete_type<T, P>::type;
 
-	template<class p1, class p2>
-	using p_conjunction = p_exclusion<  typename  detail::P_conjunction<p1, p2>::type>;
+	template<class P1, class P2>
+	using p_conjunction = p_exclusion<  typename  detail::P_conjunction<P1, P2>::type>;
 
-	template<class main_pack, class det>
-	using p_detach = typename detail::P_detach< det, main_pack >::type;
+	template<class Pack_to_change, class Types_to_detach>
+	using p_detach = typename detail::P_detach< Types_to_detach, Pack_to_change >::type;
 
-	template<class num, size_t start, size_t end>
-	using p_sub = typename detail::P_cut_first< typename detail::P_cut_last<num, end>::type, start>::type;
+	template<class P, size_t start, size_t end>
+	using p_sub = typename detail::P_cut_first< typename detail::P_cut_last<P, end>::type, start>::type;
 
-	template<class p1, class p2>
-	using p_disjunction = p_exclusion<p_merge<p1, p2>>;
+	template<class P1, class P2>
+	using p_disjunction = p_exclusion<p_merge<P1, P2>>;
 }
 
 

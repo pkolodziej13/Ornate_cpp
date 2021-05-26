@@ -11,6 +11,10 @@ namespace agg
 			sizes.fill(0);
 			access_helper.fill(1);
 		}
+		Multiarray_orientation(const std::array<size_t, dimension>& siz)
+		{
+			resize(siz);
+		}
 		void resize(const std::array<size_t, dimension>& siz)
 		{
 			sizes = siz;

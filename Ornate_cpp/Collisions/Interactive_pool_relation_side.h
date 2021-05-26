@@ -15,10 +15,10 @@ namespace col
 struct Interactive_pool_relation_side
 {
 	using key_to_this = size_t;
-	using direct_complexity = uti::linear_complexity<2>;
+	using direct_complexity = uti::Linear_complexity<2>;
 
 	template<class Mutual, size_t type_number>
-	struct relation_individual
+	struct Relation_individual
 	{
 		static constexpr size_t oposite_number = Mutual::oposite(type_number);
 		using Oposite = typename Mutual::template Relation_wing<oposite_number>;

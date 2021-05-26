@@ -4,7 +4,7 @@
 namespace obj
 {
 	template<class Relation1_type, class Relation2_type, class T1, class T2, class Value = void, Value_possesing possesing = Value_possesing::optimal>
-	struct Relation_two_side
+	struct Relation_asymmetry
 	{
 		static constexpr size_t oposite_general(size_t I) { return (I + 1) % 2; };
 		template<size_t I> using Relation = std::conditional_t<I == 0, Relation1_type, Relation2_type>;
@@ -18,7 +18,7 @@ namespace obj
 		{
 			using type = std::conditional_t<I == 0, T1, T2>;
 			using Concomitant = Relation_concomitant<typename Relation<oposite_general(I)>::key_to_this, typename Value_part_deduction::template Value_component<I>>;
-			using Individual = typename Relation<I>::template relation_individual<Wing<Master_type,I>>;
+			using Individual = typename Relation<I>::template Relation_individual<Wing<Master_type,I>>;
 			static constexpr size_t type_number = I;
 			static constexpr size_t has_key = !std::is_same_v<typename Relation<I>::key_to_this, void>;
 			static constexpr size_t oposite_type_number = oposite_general(I);
@@ -57,8 +57,8 @@ namespace obj
 			using base_type::to_individualist;
 			using base_type::to_wing;
 
-			friend typename Relation1_type::template relation_individual<Wing1>;
-			friend typename Relation2_type::template relation_individual<Wing2>;
+			friend typename Relation1_type::template Relation_individual<Wing1>;
+			friend typename Relation2_type::template Relation_individual<Wing2>;
 			friend Master_relation;
 			friend Relation_head;
 			friend Mutual_relation_resolver<Master_relation>;

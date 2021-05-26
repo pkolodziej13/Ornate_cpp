@@ -15,15 +15,15 @@ namespace mth::geo3
 		{
 			return center + direction * x;
 		}
-		float distance(vec3 v)const
+		float distance(vec3 point)const
 		{
-			mth::vec3 from_center = v - center;
+			mth::vec3 from_center = point - center;
 			Direction side = mth::cross(from_center, direction.vec());
 			return mth::cross(direction.vec(), side.vec()).dot(from_center);
 		}
-		vec3 translation(vec3 v)const
+		vec3 translation(vec3 point)const
 		{
-			mth::vec3 from_center = v - center;
+			mth::vec3 from_center = point - center;
 			Direction side = mth::cross(from_center, direction.vec());
 			return mth::cross(direction.vec(), side.vec());
 		}

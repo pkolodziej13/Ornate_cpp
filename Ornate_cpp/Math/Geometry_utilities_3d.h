@@ -5,7 +5,7 @@
 
 namespace mth::geo3
 {
-	inline float triangleField(const vec3& a, const vec3& b, const vec3& c)
+	inline float triangle_field(const vec3& a, const vec3& b, const vec3& c)
 	{
 		float aa = (a - b).length();
 		float bb = (a - c).length();

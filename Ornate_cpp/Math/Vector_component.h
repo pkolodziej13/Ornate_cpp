@@ -2,69 +2,74 @@
 
 namespace mth::linear_algebra
 {
-	template<class t, size_t I>
+	template<class T, size_t I>
 	struct vec_element
 	{
-		t e;
-		t& element()
+		T& element()
 		{
 			return e;
 		}
-		const t& element()const
+		const T& element()const
 		{
 			return e;
 		}
+
+		T e;
 	};
-	template<class t>
-	struct vec_element<t, 0>
+	template<class T>
+	struct vec_element<T, 0>
 	{
-		t x;
-		t& element()
+		T& element()
 		{
 			return x;
 		}
-		const t& element()const
+		const T& element()const
 		{
 			return x;
 		}
+
+		T x;
 	};
-	template<class t>
-	struct vec_element<t, 1>
+	template<class T>
+	struct vec_element<T, 1>
 	{
-		t y;
-		t& element()
+		T& element()
 		{
 			return y;
 		}
-		const t& element()const
+		const T& element()const
 		{
 			return y;
 		}
+
+		T y;
 	};
-	template<class t>
-	struct vec_element<t, 2>
+	template<class T>
+	struct vec_element<T, 2>
 	{
-		t z;
-		t& element()
+		T& element()
 		{
 			return z;
 		}
-		const t& element()const
+		const T& element()const
 		{
 			return z;
 		}
+
+		T z;
 	};
-	template<class t>
-	struct vec_element<t, 3>
+	template<class T>
+	struct vec_element<T, 3>
 	{
-		t w;
-		t& element()
+		T& element()
 		{
 			return w;
 		}
-		const t& element()const
+		const T& element()const
 		{
 			return w;
 		}
+
+		T w;
 	};
 }

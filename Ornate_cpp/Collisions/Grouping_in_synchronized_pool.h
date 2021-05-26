@@ -53,6 +53,7 @@ namespace col
 							lambda(elements.active_or_not_at(i), elements.active_or_not_at(j));
 						}
 		}
+	private:
 		agg::Pool_synchronized<T> elements;
 	};
 }

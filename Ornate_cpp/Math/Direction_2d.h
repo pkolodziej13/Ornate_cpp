@@ -15,13 +15,13 @@ namespace mth::geo2
 			direction.x = clockwise.sin();
 			direction.y = clockwise.cos();
 		}
-		vec2 operator *(float v)const
+		vec2 operator *(float scalar)const
 		{
-			return direction * v;
+			return direction * scalar;
 		}
-		vec2 operator /(float v)const
+		vec2 operator /(float scalar)const
 		{
-			return direction / v;
+			return direction / scalar;
 		}
 		Direction operator-()const
 		{

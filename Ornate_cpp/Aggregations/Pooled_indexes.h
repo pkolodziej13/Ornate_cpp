@@ -36,9 +36,9 @@ namespace agg
 				return pool_size++;
 			}
 		}
-		void add_free(size_t siz)
+		void add_free(size_t free_to_add)
 		{
-			for_i(siz)
+			for_i(free_to_add)
 				holes.insert(pool_size++);
 		}
 		bool try_add_at(size_t i)

@@ -7,14 +7,14 @@
 
 namespace obj
 {
-	struct Dense_indexed_relation
+	struct Relation_side_dense_indexed
 	{
 
 		using key_to_this = size_t;
-		using direct_complexity = uti::linear_complexity<1>;
+		using direct_complexity = uti::Linear_complexity<1>;
 
 		template<class Wing>
-		struct relation_individual
+		struct Relation_individual
 		{
 			static constexpr size_t oposite_number = Wing::oposite_type_number;
 			using Oposite = typename Wing::Oposite_wing::Individual;
@@ -23,12 +23,12 @@ namespace obj
 		private:
 			friend typename Wing::Master;
 			friend Mutual_relation_resolver<typename Wing::Master>;
-			template<class F>
-			inline void for_each(F&& lam)
+			template<class Lambda>
+			inline void for_each(Lambda&& lambda)
 			{
 				for (const auto& rel : container)
 				{
-					lam(*rel.related, rel);
+					lambda(*rel.related, rel);
 				}
 			}
 

@@ -7,27 +7,27 @@ namespace obj
 	template<class Identificator_type,class Responsibility>
 	struct Instances_global_book :uti::non_replicable
 	{
-		struct reader
+		struct Reader
 		{
-			reader()
+			Reader()
 			{
-				assert(writers == 0);
+				Responsibility::verify([&]() {return writers == 0; });
 				readers++;
 			}
-			~reader()
+			~Reader()
 			{
 				readers--;
 			}
 		};
-		struct writer
+		struct Writer
 		{
-			writer()
+			Writer()
 			{
-				assert(writers == 0);
-				assert(readers == 0);
+				Responsibility::verify([&]() {return writers == 0; });
+				Responsibility::verify([&]() {return readers == 0; });
 				writers++;
 			}
-			~writer()
+			~Writer()
 			{
 				writers--;
 			}
@@ -39,9 +39,9 @@ namespace obj
 	template<class Identificator_type>
 	struct Instances_global_book<Identificator_type,uti::Certain> :uti::non_replicable
 	{
-		struct reader
+		struct Reader
 		{};
-		struct writer
+		struct Writer
 		{};
 	};
 }

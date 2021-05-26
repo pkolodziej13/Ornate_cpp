@@ -1,6 +1,5 @@
 #pragma once
 #include <compare>
-#include <cmath>
 
 #include "Trigonometry.h"
 #include "Arithmetic_additable.h"
@@ -12,16 +11,8 @@ namespace mth
 		mth::Arithmetic_additable<Turn, Turn>,
 		mth::Arithmetic_multiplicable<Turn, float >
 	{
-		//using mat_type = g_mat<float, 2, 2>;
-
 		Turn() = default;
 		Turn(float value) :value{ value } {};
-		//Turn(const mat_type& mat)
-		//{
-		//	auto cos = mat.get<0, 0>();
-		//	auto sin = mat.get<1, 0>();
-		//	value = atan2(sin, cos) / pi2;
-		//}
 
 		using arithmetic_additable = mth::Arithmetic_additable<Turn, Turn>;
 		using arithmetic_multiplicable = mth::Arithmetic_multiplicable<Turn, float >;
@@ -36,20 +27,20 @@ namespace mth
 		using arithmetic_multiplicable::operator/=;
 
 		template< class Operation>
-		static Turn algebraic_pair_operation(const Turn& a, const Turn& b, Operation&& operation)
+		static Turn algebraic_pair_operation(Turn const& a, Turn const& b, Operation&& operation)
 		{
 			return { operation(a.value,b.value) };
 		}
 		template<class Operation>
-		static Turn algebraic_pair_operation(const Turn& a, const float& b, Operation&& operation)
+		static Turn algebraic_pair_operation(Turn const& a, const float& b, Operation&& operation)
 		{
 			return { operation(a.value,b) };
 		}
-		std::partial_ordering operator <=>(const Turn& right_value)const
+		std::partial_ordering operator <=>(Turn const & right)const
 		{
-			return value <=> right_value.value;
+			return value <=> right.value;
 		}
-		bool operator ==(Turn right)const
+		bool operator ==(Turn const& right)const
 		{
 			return { value == right.value };
 		}

@@ -17,7 +17,6 @@ namespace uti
 			return condition_checker();
 		}
 
-		static constexpr bool manual_return = true;
 		template<class T>
 		using result_type = typename Natural_optional<T>::type;
 		template<class T, class ... Args_v>
@@ -35,6 +34,8 @@ namespace uti
 		{
 			return Natural_optional<T>::value(val);
 		}
+
+		static constexpr bool manual_return = true;
 	};
 
 }

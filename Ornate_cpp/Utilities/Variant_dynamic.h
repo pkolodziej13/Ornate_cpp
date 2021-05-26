@@ -5,43 +5,38 @@
 
 namespace uti
 {
-	template<class ... tt>
-	struct varaint_dynamic :uti::non_replicable
+	template<class ... T_v>
+	struct Varaint_dynamic :uti::non_replicable
 	{
-		template<class t, class ... args>
+		template<class T, class ... args>
 		void emplace(const args & ... args_a)
 		{
-			object.emplace<std::unique_ptr<t>>(std::make_unique<t>(args_a...));
+			element.emplace<std::unique_ptr<T>>(std::make_unique<T>(args_a...));
 		}
-		std::variant<std::unique_ptr<tt>... > object;
-		template<class t>
+		template<class T>
 		bool holds_alternative()
 		{
-			return object.holds_alternative<std::unique_ptr<t>>();
+			return element.holds_alternative<std::unique_ptr<T>>();
 		}
 		size_t index()
 		{
-			return object.index();
+			return element.index();
 		}
-		template<class lam>
-		auto visit(const lam& func)
+		template<class Lambda>
+		auto visit(Lambda&& lambda)
 		{
 			return std::visit([&](auto& a) {
-				return func(*a);
-			}, object);
+				return lambda(*a);
+			}, element);
 		}
-		template<class t>
-		t& get()
+		template<class T>
+		T& get()
 		{
-			return *std::get<std::unique_ptr<t>>(object);
+			return *std::get<std::unique_ptr<T>>(element);
 		}
 	private:
-		template<class t, class lam>
-		auto call_visit(const lam& func)
-		{
-			return func(this->get<t>());
-		}
 
+		std::variant<std::unique_ptr<T_v>... > element;
 	};
 
 }

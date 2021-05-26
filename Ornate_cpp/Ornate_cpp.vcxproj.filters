@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Default Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Aggregations">
       <UniqueIdentifier>{5dcae905-c005-4651-846e-b917f7df0f1e}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -61,15 +57,19 @@
       <UniqueIdentifier>{bc427bcf-42fd-4cfb-b14e-5ea685c73911}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="VS compiling">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>Default Files</Filter>
+      <Filter>VS compiling</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>Default Files</Filter>
+      <Filter>VS compiling</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\bimap.h">
+    <ClInclude Include="Aggregations\Bimap.h">
       <Filter>Aggregations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Aggregations\Dense.h">
@@ -192,13 +192,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Index.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Iterating_with_group.h">
+    <ClInclude Include="Utilities\Loops.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\loops.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Multidimensional_iterator.h">
+    <ClInclude Include="Utilities\Multidimensional_range.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Natural_optional.h">
@@ -303,9 +300,6 @@
     <ClInclude Include="Math\Projection.h">
       <Filter>Math\Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Math\rec_frame.h">
-      <Filter>Math\Geometry</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Rotation_matrix_3d.h">
       <Filter>Math\Geometry</Filter>
     </ClInclude>
@@ -324,7 +318,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_individual_base.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_mutual.h">
+    <ClInclude Include="Objects\Relation_asymmetry.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_profiled.h">
@@ -345,13 +339,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_side_single.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_symetric.h">
+    <ClInclude Include="Objects\Relation_symmetry.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_utilities.h">
-      <Filter>Objects\Relations</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_value_manager.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Relation_with_events.h">
@@ -364,9 +355,6 @@
       <Filter>Objects\Relations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Mutual_relation_resolver.h">
-      <Filter>Objects\Relations</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Standard_relations.h">
       <Filter>Objects\Relations</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Objects\Value_possesing.h">
@@ -417,16 +405,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_components.h">
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\numbered_inheritance.h">
+    <ClInclude Include="Utilities\Numbered_inheritance.h">
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numbered_operations.h">
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Numeration.h">
-      <Filter>Utilities\Constructs</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\pointers.h">
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Representatives.h">
@@ -436,9 +421,6 @@
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Values_computing_cell.h">
-      <Filter>Utilities\Constructs</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\values_network.h">
       <Filter>Utilities\Constructs</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Utilities\Variant_dynamic.h">
@@ -531,10 +513,16 @@
     <ClInclude Include="Math\Linear_algebra_utilities.h">
       <Filter>Math\Linear_algebra</Filter>
     </ClInclude>
+    <ClInclude Include="Utilities\shared_ptr_inplacement.h">
+      <Filter>Utilities\Constructs</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rectangular_frame.h">
+      <Filter>Math\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>Default Files</Filter>
+      <Filter>VS compiling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

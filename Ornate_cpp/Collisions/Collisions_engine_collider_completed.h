@@ -35,10 +35,10 @@ namespace col
 	template<class T>
 	struct Collider :Colider_unified
 	{
-		T current;
 		~Collider()
 		{
 			this->clear_relations();
 		}
+		T current;
 	};
 }

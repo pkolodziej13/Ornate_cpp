@@ -7,15 +7,15 @@
 
 namespace mth
 { 
-	template<class t>
-	struct rec_frame :Range<g_vec<t,2>>
+	template<class T>
+	struct Rectangular_frame :Range<g_vec<T,2>>
 	{
-		using this_type = rec_frame<t>;
-		using vec_type = g_vec<t, 2>;
-		using floating_type = Minimal_float<t>;
-		using Range<g_vec<t, 2>>::size;
+		using this_type = Rectangular_frame<T>;
+		using vec_type = g_vec<T, 2>;
+		using floating_type = Minimal_float<T>;
+		using Range<g_vec<T, 2>>::size;
 
-		rec_frame(vec_type start = vec_type(0, 0), vec_type size = vec_type(1, 1)) :Range<vec_type>(start, start + size) {}
+		Rectangular_frame(vec_type start = vec_type(0, 0), vec_type size = vec_type(1, 1)) :Range<vec_type>(start, start + size) {}
 
 		void set_size(vec_type new_size)
 		{
@@ -60,17 +60,17 @@ namespace mth
 			g_vec<floating_type, 2> floating_size = size();
 			return floating_size / std::min<floating_type>(floating_size.x, floating_size.y);
 		}
-		template<class t2>
-		auto operator*(const g_vec<t2,2> & rec)const
+		template<class T_specific>
+		auto operator*(const g_vec<T_specific,2> & rec)const
 		{
-			using higher_type = std::decay_t<decltype(t() + t2())>;
+			using higher_type = std::decay_t<decltype(T() + T_specific())>;
 			using floating_type_c = typ::type_of<floating_type_deductor<higher_type>>;
-			return rec_frame<floating_type_c>( this->min*rec ,size()*rec );
+			return Rectangular_frame<floating_type_c>( this->min*rec ,size()*rec );
 		}
-		template<class t2>
-		auto operator*=(const g_vec<t2,2> & rec)
+		template<class T_specific>
+		auto operator*=(const g_vec<T_specific,2> & rec)
 		{
-			using higher_type = decltype(t + t2);
+			using higher_type = decltype(T{} + T_specific{});
 			using floating_type_c = typ::type_of<floating_type_deductor<higher_type>>;
 			this->min *= rec;
 			this->max *= rec;

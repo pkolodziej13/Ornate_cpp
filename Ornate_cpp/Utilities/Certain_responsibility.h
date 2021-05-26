@@ -5,7 +5,6 @@ namespace uti
 {
 	struct No_invasive_responsibility
 	{
-		static constexpr bool manual_return = false;
 		template<class T>
 		using result_type = T;
 		template<class T, class ... Args_v>
@@ -23,6 +22,8 @@ namespace uti
 		{
 			return val;
 		}
+
+		static constexpr bool manual_return = false;
 	};
 
 	struct Certain :No_invasive_responsibility

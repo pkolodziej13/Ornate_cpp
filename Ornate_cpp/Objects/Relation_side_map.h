@@ -8,13 +8,13 @@
 
 namespace obj
 {
-	struct Set_relation
+	struct Relation_side_map
 	{
 		using key_to_this = void;
-		using direct_complexity = uti::logarythmic_complexity<2>;
+		using direct_complexity = uti::Logarythmic_complexity<2>;
 
 		template<class Wing>
-		struct relation_individual;
+		struct Relation_individual;
 
 		template< class Wing, class Concomitant>
 		struct relation_specjalized
@@ -24,12 +24,12 @@ namespace obj
 		private:
 			friend typename Wing::Master;
 			friend Mutual_relation_resolver<typename Wing::Master>;
-			template<class F>
-			inline void for_each(F&& lam)
+			template<class Lambda>
+			inline void for_each(Lambda&& lambda)
 			{
 				for (const auto& rel : container)
 				{
-					lam(*rel.first, rel.second);
+					lambda(*rel.first, rel.second);
 				}
 			}
 
@@ -74,12 +74,12 @@ namespace obj
 		private:
 			friend typename Wing::Master;
 			friend Mutual_relation_resolver<typename Wing::Master>;
-			template<class F>
-			inline void for_each(F&& lam)
+			template<class Lambda>
+			inline void for_each(Lambda&& lambda)
 			{
 				for (const auto& rel : container)
 				{
-					lam(*rel, Concomitant{});
+					lambda(*rel, Concomitant{});
 				}
 			}
 
@@ -115,7 +115,7 @@ namespace obj
 		};
 
 		template<class Wing>
-		struct relation_individual :relation_specjalized<Wing, typename Wing::Concomitant>
+		struct Relation_individual :relation_specjalized<Wing, typename Wing::Concomitant>
 		{
 		};
 	};

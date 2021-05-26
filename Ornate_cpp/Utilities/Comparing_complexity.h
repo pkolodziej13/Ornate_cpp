@@ -12,10 +12,10 @@ namespace uti
 
 	template<class T1, class T2>
 	struct Is_same_complexity_kind;
-	template<template<size_t>class T1_t, size_t V1, template<size_t>class T2_t, size_t V2>
-	struct Is_same_complexity_kind <T1_t<V1>, T2_t<V2>> :std::false_type {};
-	template<template<size_t>class T_t, size_t V1, size_t V2>
-	struct Is_same_complexity_kind<T_t<V1>, T_t<V2>> :std::true_type {};
+	template<template<size_t>class T1_t, size_t balast1, template<size_t>class T2_t, size_t balast2>
+	struct Is_same_complexity_kind <T1_t<balast1>, T2_t<balast2>> :std::false_type {};
+	template<template<size_t>class T_t, size_t balast1, size_t balast2>
+	struct Is_same_complexity_kind<T_t<balast1>, T_t<balast2>> :std::true_type {};
 
 	template<class T1, class T2>
 	struct Faster_complexity
@@ -26,19 +26,19 @@ namespace uti
 			{
 				return T1::balast_value > T2::balast_value;
 			}
-			else if constexpr (typ::is_kind<T1, uti::Conplexity_kind<uti::constant_complexity>>)
+			else if constexpr (typ::is_kind<T1, uti::Conplexity_kind<uti::Constant_complexity>>)
 			{
 				return 0;
 			}
-			else if constexpr (typ::is_kind<T2, uti::Conplexity_kind<uti::constant_complexity>>)
+			else if constexpr (typ::is_kind<T2, uti::Conplexity_kind<uti::Constant_complexity>>)
 			{
 				return 1;
 			}
-			else if constexpr (typ::is_kind<T1, uti::Conplexity_kind<uti::logarythmic_complexity>>)
+			else if constexpr (typ::is_kind<T1, uti::Conplexity_kind<uti::Logarythmic_complexity>>)
 			{
 				return 0;
 			}
-			else if constexpr (typ::is_kind<T2, uti::Conplexity_kind<uti::logarythmic_complexity>>)
+			else if constexpr (typ::is_kind<T2, uti::Conplexity_kind<uti::Logarythmic_complexity>>)
 			{
 				return 1;
 			}
@@ -55,8 +55,8 @@ namespace uti
 	{
 		using Complexity1_type = std::decay_t<Complexity1>;
 		using Complexity2_type = std::decay_t<Complexity2>;
-		constexpr bool is_complexity1_constant = typ::is_kind<Complexity1_type, uti::Conplexity_kind<uti::constant_complexity>>;
-		constexpr bool is_complexity2_constant = typ::is_kind<Complexity2_type, uti::Conplexity_kind<uti::constant_complexity>>;
+		constexpr bool is_complexity1_constant = typ::is_kind<Complexity1_type, uti::Conplexity_kind<uti::Constant_complexity>>;
+		constexpr bool is_complexity2_constant = typ::is_kind<Complexity2_type, uti::Conplexity_kind<uti::Constant_complexity>>;
 
 		constexpr size_t if_and_probality_balst = 2;
 		if constexpr (is_complexity1_constant && is_complexity2_constant)

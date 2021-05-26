@@ -5,8 +5,6 @@ namespace mth
 	template<class Individualist,class Target>
 	struct Arithmetic_additable
 	{
-
-
 		Individualist operator+(const Target& target)const
 		{
 			return Individualist::algebraic_pair_operation(

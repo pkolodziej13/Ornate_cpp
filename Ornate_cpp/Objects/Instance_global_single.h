@@ -9,17 +9,18 @@ namespace obj
 	{
 		Instance_global_single()
 		{
-			assert(current == nullptr);
+			Responsibility::verify([&]() {return current == nullptr; });
 			current = this;
-		}
-		static bool can_be_created()
-		{
-			return current == nullptr;
 		}
 		~Instance_global_single()
 		{
-			assert(current == this);
+			Responsibility::verify([&]() {return current == this; });
 			current = nullptr;
+		}
+
+		static bool can_be_created()
+		{
+			return current == nullptr;
 		}
 	private:
 		inline static Instance_global_single < Identificator_type, Responsibility >* current{ nullptr };

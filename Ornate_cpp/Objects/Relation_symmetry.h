@@ -1,16 +1,14 @@
 #pragma once
-#include "Relation_mutual.h"
-#include "Relation_individual_base.h"
-#include "Relation_with_value.h"
+#include "Relation_asymmetry.h"
 
 namespace obj
 {
 	template<class Relation1_type, class Relation2_type, class T1, class T2, class Value = void, Value_possesing possesing = Value_possesing::optimal>
-	struct Relation_symetric_wings :Relation_two_side<Relation1_type, Relation2_type, T1, T2, Value, possesing>
+	struct Relation_symmetry :Relation_asymmetry<Relation1_type, Relation2_type, T1, T2, Value, possesing>
 	{
 	};
 	template<class Relation, class T, class Value, Value_possesing possesing>
-	struct Relation_symetric_wings<Relation, Relation, T, T, Value, possesing>
+	struct Relation_symmetry<Relation, Relation, T, T, Value, possesing>
 	{
 		static constexpr Value_possesing_concrete possesing_concrete = std::is_same_v<void, Value>? Value_possesing_concrete::none: Value_possesing_concrete::both;
 		using Value_part_deduction = Deduce_value_component<possesing_concrete, Value>;

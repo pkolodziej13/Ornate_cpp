@@ -12,7 +12,7 @@ namespace mth
 	{
 		using this_type = Fixed_point_number<T, unit_value>;
 		using Numeric_limits = std::numeric_limits<T>;
-		using Operational_type = typename Number_type<Numeric_limits::is_signed, CHAR_BIT* sizeof(T)*2>::type;
+		using Operational_type = typename Integer_construction<Numeric_limits::is_signed, CHAR_BIT* sizeof(T)*2>::type;
 		using Minimal_reqired_float = Minimal_float<T>;
 
 		constexpr Fixed_point_number() = default;

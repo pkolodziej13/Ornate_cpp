@@ -2,7 +2,7 @@
 #include "Collisions_requirements.h"
 namespace col
 {
-	namespace Events_reqirement
+	namespace Events_requirement
 	{
 
 		template<class Individualist,class Comparer>

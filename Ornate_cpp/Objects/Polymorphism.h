@@ -13,10 +13,10 @@ namespace obj
 		auto check_type = [&](auto over_type)
 		{
 			using type = typename decltype(over_type)::type;
-			type * dyn = dynamic_cast<type*>(&base);
-			if (dyn)
+			type * casted = dynamic_cast<type*>(&base);
+			if (casted)
 			{
-				result=dyn;
+				result.emplace<type*>(casted);
 			}
 		};
 		((check_type(typ::Overtype<Inherited_v>{})), ...);

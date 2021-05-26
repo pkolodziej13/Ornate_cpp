@@ -4,28 +4,28 @@
 
 namespace col
 {
-	template<class ...Layers>
+	template<class ...Layers_v>
 	struct Engine_layers_comparer
 	{
-		using Layers_p = typ::Pack<Layers...>;
-		constexpr Engine_layers_comparer<Layers...>& comparer()
+		using Layers_p = typ::Pack<Layers_v...>;
+		constexpr Engine_layers_comparer<Layers_v...>& comparer()
 		{
 			return *this;
 		}
-		using Comparer_type = Engine_layers_comparer<Layers...>;
-		template<class L>
+		using Comparer_type = Engine_layers_comparer<Layers_v...>;
+		template<class Layer_specific>
 		static size_t layer_key()
 		{
-			return typ::p_index<Layers_p, L>;
+			return typ::p_index<Layers_p, Layer_specific>;
 		}
 		static bool layer_of_indexes_collides(size_t a, size_t b)
 		{
 			return collisions_table.get(a, b);
 		}
-		template<class Layer, class target_layer>
+		template<class Layer_left, class Layer_right>
 		static constexpr bool collides()
 		{
-			return typ::p_has< typename Layer::collidable, target_layer>;
+			return typ::p_has< typename Layer_left::collidable, Layer_right>;
 		}
 		static constexpr agg::Symetric_value_table<bool, Layers_p::size> create_collisions_table()
 		{

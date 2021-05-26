@@ -9,19 +9,6 @@ namespace mth::geo3
 	struct Projection
 	{
 		Projection() = default;
-		Projection(const mat4& m)
-		{
-			throw "not implemented";
-			//near far
-			//2n / (r - l) 0 0 0
-			//	0 2n / (t - b) 0 0
-			//	(l + r) / (r - l) (t + b) / (t - b) (n + f) / (n - f) - 1
-			//	0 0 (2nf) / (n - f) 0
-
-			//	So a = (n + f) / (n - f), b = (2nf) / (n - f).
-			//	(1 / ((a + 1)(a - 1))) / b = c = (n - f) / 2
-			//	(a + 1) / c = n, (a - 1) / c = f
-		}
 		Projection(const Range<float>& near_far, vec2 size = { 1.f,1.f })
 			:near_far(near_far), alternative_size(size), angles(0, 0)
 		{}

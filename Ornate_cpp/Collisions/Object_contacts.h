@@ -107,7 +107,7 @@ namespace col
 		{
 			current.add(to_add);
 		}
-
+	private:
 		agg::vector_set<T> current;
 		agg::vector_set<T> new_ones;
 	};

@@ -168,7 +168,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="Tests\Math_tests\Geometry_test.cpp" />
+    <ClCompile Include="Tests\Math_tests\Linear_algebra_tests.cpp" />
+    <ClCompile Include="Tests\Math_tests\Model_matrix_tests.cpp" />
+    <ClCompile Include="Tests\Math_tests\Normalized_tests.cpp" />
+    <ClCompile Include="Tests\Math_tests\Rectangular_frame_tests.cpp" />
+    <ClCompile Include="Tests\Math_tests\Rotations_tests.cpp" />
+    <ClCompile Include="Tests\Math_tests\View_matrix_tests.cpp" />
+    <ClCompile Include="VS compiling\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -176,29 +183,22 @@
     </ClCompile>
     <ClCompile Include="Tests\Aggregations_tests\Loose_list_tests.cpp" />
     <ClCompile Include="Tests\Collisions_tests\Shapes_collisions_tests.cpp" />
-    <ClCompile Include="Tests\Math\Geometry_test.cpp" />
-    <ClCompile Include="Tests\Math\Linear_algebra_tests.cpp" />
-    <ClCompile Include="Tests\Types\Collecting_types_tests.cpp" />
+    <ClCompile Include="Tests\Types_tests\Collecting_types_tests.cpp" />
     <ClCompile Include="Tests\Collisions_tests\Collisions.cpp" />
-    <ClCompile Include="Tests\Math\Model_matrix_tests.cpp" />
-    <ClCompile Include="Tests\Math\Normalized_tests.cpp" />
-    <ClCompile Include="Tests\Math\rec_frame_tests.cpp" />
-    <ClCompile Include="Tests\Math\Rotations_tests.cpp" />
-    <ClCompile Include="Tests\Math\View_matrix_tests.cpp" />
     <ClCompile Include="Tests\Aggregations_tests\Ordered_hiererchy_tests.cpp" />
-    <ClCompile Include="Tests\Types\Kind_trial_tests.cpp" />
-    <ClCompile Include="Tests\Utilities\pointers_tests.cpp" />
+    <ClCompile Include="Tests\Types_tests\Kind_trial_tests.cpp" />
+    <ClCompile Include="Tests\Utilities_tests\pointers_tests.cpp" />
     <ClCompile Include="Tests\Aggregations_tests\Pool_tests.cpp" />
-    <ClCompile Include="Tests\Objects\prototype_tests.cpp" />
-    <ClCompile Include="Tests\Utilities\Responsibility_tests.cpp" />
-    <ClCompile Include="Tests\Objects\Standard_one_type_relations_tests.cpp" />
-    <ClCompile Include="Tests\Objects\Standard_two_types_relations_tests.cpp" />
+    <ClCompile Include="Tests\Objects_tests\prototype_tests.cpp" />
+    <ClCompile Include="Tests\Utilities_tests\Responsibility_tests.cpp" />
+    <ClCompile Include="Tests\Objects_tests\Standard_one_type_relations_tests.cpp" />
+    <ClCompile Include="Tests\Objects_tests\Standard_two_types_relations_tests.cpp" />
     <ClCompile Include="Tests\Aggregations_tests\Invoker_tests.cpp" />
-    <ClCompile Include="Tests\Types\Members_detecting_tests.cpp" />
-    <ClCompile Include="Tests\Utilities\values_network_tests.cpp" />
+    <ClCompile Include="Tests\Types_tests\Members_detecting_tests.cpp" />
+    <ClCompile Include="Tests\Utilities_tests\values_network_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="VS compiling\pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

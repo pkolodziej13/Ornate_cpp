@@ -1,8 +1,8 @@
 #pragma once
 #include <Types/Parametrized_method.h>
+
 namespace mth
 {
-
 	template<typename T>
 	concept Default_multiplication = requires(T a, T b)
 	{
@@ -10,16 +10,16 @@ namespace mth
 	};
 
 	template<class Result_type, class Parent_type, class Argument_type>
-	typ::Parametrized_method<Result_type(Parent_type::*)(Argument_type)const noexcept> multilying_operator_trial(Result_type(Parent_type::*)(Argument_type)const noexcept)
+	typ::Parametrized_method<Result_type(Parent_type::*)(Argument_type)const noexcept> multiplying_operator_trial(Result_type(Parent_type::*)(Argument_type)const noexcept)
 	{}
 	template<class Result_type, class Parent_type, class Argument_type>
-	typ::Parametrized_method<Result_type(Parent_type::*)(Argument_type)const> multilying_operator_trial(Result_type(Parent_type::*)(Argument_type)const)
+	typ::Parametrized_method<Result_type(Parent_type::*)(Argument_type)const> multiplying_operator_trial(Result_type(Parent_type::*)(Argument_type)const)
 	{}
 
 	template<typename T>
 	concept Member_multiplication = requires
 	{
-		multilying_operator_trial(&T::operator *);
+		multiplying_operator_trial(&T::operator *);
 	};
 
 	template<class Left_type>
@@ -33,7 +33,7 @@ namespace mth
 		requires (!Default_multiplication<Left_type>)
 	struct Multiplier_deduction<Left_type>
 	{
-		using trial_result = decltype(multilying_operator_trial(&Left_type::operator *));
+		using trial_result = decltype(multiplying_operator_trial(&Left_type::operator *));
 		using Right_type = typ::p_element<0,typename trial_result::Arguments_pack>;
 	};
 

@@ -48,11 +48,11 @@ namespace obj
 			Mutual_relation_resolver<Master_relation>::template for_each_identification <Wing<I>>(to_wing<I>(object), f);
 		}
 
-		template<size_t I, class Concomitant_f>
+		template<size_t I, class Concomitant>
 		static auto oposite_concomitant(
 			Relation_wing<I>& object1,
 			Relation_wing<Wing<I>::oposite_type_number>& object2,
-			const Concomitant_f& key)
+			const Concomitant& key)
 		{
 			return Mutual_relation_resolver<Master_relation>::template oposite_concomitant<
 				Wing<I>, Wing<Wing<I>::oposite_type_number>>(object1, object2, key);

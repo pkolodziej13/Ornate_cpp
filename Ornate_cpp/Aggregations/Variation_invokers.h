@@ -7,24 +7,24 @@
 
 namespace agg
 {
-	template<class inputs_p, class outputs_p>
+	template<class Inputs_p, class Outputs_p>
 	struct Variation_invokers;
-	template<class ...inputs_v, class ...outputs_v>
-	struct Variation_invokers<typ::Pack<inputs_v...>, typ::Pack<outputs_v...>>
+	template<class ...Inputs_v, class ...Outputs_v>
+	struct Variation_invokers<typ::Pack<Inputs_v...>, typ::Pack<Outputs_v...>>
 	{
-		using signals_p = typ::Pack<inputs_v..., outputs_v...>;
-		using inputs_p = typ::Pack<inputs_v...>;
-		using function_type = void(outputs_v...);
+		using signals_p = typ::Pack<Inputs_v..., Outputs_v...>;
+		using inputs_p = typ::Pack<Inputs_v...>;
+		using function_type = void(Outputs_v...);
 
-		auto add_callback_rapid(const std::function<function_type>& f, const inputs_v &... keys)
+		auto add_callback_rapid(const std::function<function_type>& f, const Inputs_v &... keys)
 		{
-			return invokers[key_type(keys...)].Add(f);
+			return invokers[key_type(keys...)].add(f);
 		}
-		auto add_callback(const std::function<function_type>& f, const inputs_v &... keys)
+		auto add_callback(const std::function<function_type>& f, const Inputs_v &... keys)
 		{
-			return added[key_type(keys...)].Add(f);
+			return added[key_type(keys...)].add(f);
 		}
-		void invoke(const inputs_v &... keys, const outputs_v & ... arguments)
+		void invoke(const Inputs_v &... keys, const Outputs_v & ... arguments)
 		{
 			key_type key{ keys... };
 			auto search = invokers.find(key);
@@ -48,8 +48,8 @@ namespace agg
 		}
 
 	private:
-		using key_type = std::tuple<inputs_v...>;
-		std::map<key_type, Invoker<outputs_v... >> invokers;
-		std::map<key_type, Invoker<outputs_v... >> added;
+		using key_type = std::tuple<Inputs_v...>;
+		std::map<key_type, Invoker<Outputs_v... >> invokers;
+		std::map<key_type, Invoker<Outputs_v... >> added;
 	};
 }

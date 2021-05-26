@@ -3,6 +3,7 @@
 namespace uti
 {
 	struct Success_mark {};
+
 	template<class Result_type>
 	struct Result_as_success
 	{

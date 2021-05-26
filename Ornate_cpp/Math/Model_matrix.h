@@ -5,14 +5,14 @@
 
 namespace mth
 {
-	template<class t = float, size_t dim = 3>
-	struct Model_matrix :g_mat<t, dim + 1, dim + 1>
+	template<class T = float, size_t dim = 3>
+	struct Model_matrix :g_mat<T, dim + 1, dim + 1>
 	{
 		static_assert(dim == 2 || dim == 3);
-		using base_type = g_mat<t, dim + 1, dim + 1>;
-		using this_type = Model_matrix<t, dim>;
-		using vec_type = g_vec<t, dim>;
-		using complete_vec = g_vec<t, dim + 1>;
+		using base_type = g_mat<T, dim + 1, dim + 1>;
+		using this_type = Model_matrix<T, dim>;
+		using vec_type = g_vec<T, dim>;
+		using complete_vec = g_vec<T, dim + 1>;
 		using rot_mat_type = std::conditional_t<dim==2,geo2::Rotation_matrix, geo3::Rotation_matrix>;
 
 		using base_type::g_mat;
@@ -26,7 +26,7 @@ namespace mth
 		{
 			rotate(rotation_a);
 		}
-		Model_matrix(const t& scale_a)
+		Model_matrix(const T& scale_a)
 		{
 			scale(scale_a);
 		}
@@ -57,7 +57,7 @@ namespace mth
 		rot_mat_type rotation()
 		{
 			auto scal = scale();
-			g_mat<t, dim, dim > result = *this;
+			g_mat<T, dim, dim > result = *this;
 			for_i(dim)
 			{
 				result[i] /= scal[i];

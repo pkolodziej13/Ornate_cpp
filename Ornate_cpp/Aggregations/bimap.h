@@ -3,10 +3,10 @@
 
 namespace agg
 {
-	template<class t1, class t2 >
-	struct bimap
+	template<class T1, class T2 >
+	struct Bimap
 	{
-		void add(const t1& key1, const t2& key2)
+		void add(const T1& key1, const T2& key2)
 		{
 			if (map1.count(key1))
 			{
@@ -20,48 +20,48 @@ namespace agg
 			map1[key1] = key2;
 			map2[key2] = key1;
 		}
-		void remove(const t1& key)
+		void remove(const T1& key)
 		{
-			t2& key2 = map1.at(key);
+			T2& key2 = map1.at(key);
 			map1.erase(key);
 			map2.erase(key2);
 		}
-		inline void remove(const t2& key)
+		inline void remove(const T2& key)
 		{
-			t1& key1 = map2.at(key);
+			T1& key1 = map2.at(key);
 			map2.erase(key);
 			map1.erase(key1);
 		}
-		t1& get(const t2& key)
+		T1& get(const T2& key)
 		{
 			return map2.at(key);
 		}
-		t2& get(const t1& key)
+		T2& get(const T1& key)
 		{
 			return map1.at(key);
 		}
-		const t1& operator[](const t2& key)const
+		const T1& operator[](const T2& key)const
 		{
 			return map2.at(key);
 		}
-		const t2& operator[](const t1& key)const
+		const T2& operator[](const T1& key)const
 		{
 			return map1.at(key);
 		}
-		t1& operator[](const t2& key)
+		T1& operator[](const T2& key)
 		{
 			return map2.at(key);
 		}
-		t2& operator[](const t1& key)
+		T2& operator[](const T1& key)
 		{
 			return map1.at(key);
 		}
 
-		bool has(const t1& key)const
+		bool has(const T1& key)const
 		{
 			return map1.count(key) != 0;
 		}
-		bool has(const t2& key)const
+		bool has(const T2& key)const
 		{
 			return map2.count(key) != 0;
 		}
@@ -86,7 +86,7 @@ namespace agg
 		}
 	private:
 
-		std::map<t1, t2> map1;
-		std::map<t2, t1> map2;
+		std::map<T1, T2> map1;
+		std::map<T2, T1> map2;
 	};
 }

@@ -24,7 +24,7 @@ namespace col
 
 			using Object_type = Object_individual<Layer>;
 
-			using Engine_wing = typename col::Interactive_pool_relation_side::template relation_individual<Relation_core<Master_relation, Relation_head>,0>;
+			using Engine_wing = typename col::Interactive_pool_relation_side::template Relation_individual<Relation_core<Master_relation, Relation_head>,0>;
 			using Object_wing = typename Object_side_engine_relation<Object_individual<Layer>, Engine<Layer>>::Object_individual ;
 			template<size_t I> using Relation_wing = std::conditional_t < I == 0
 				, Engine_wing

@@ -3,77 +3,78 @@
 
 namespace typ
 {
-	template< class ...tt> 
+	template< class ...T_v> 
 	struct Pack 
 	{
-		static constexpr size_t size = sizeof...(tt);
-		template<class lam>
-		constexpr static void for_each(lam && f)
+		static constexpr size_t size = sizeof...(T_v);
+
+		template<class Lambda>
+		constexpr static void for_each(Lambda&& lambda)
 		{
-			( f(Overtype<tt>()) ,...);
+			(lambda(Overtype<T_v>()) ,...);
 		}
-		template<class lam>
-		constexpr static auto expand(lam && f)
+		template<class Lambda>
+		constexpr static auto expand(Lambda&& lambda)
 		{
-			return f(Overtype<tt>()...);
+			return lambda(Overtype<T_v>()...);
 		}
 	};
 
 	namespace detail
 	{
-		template <typename T, typename p>
+		template <typename T, typename P>
 		struct P_has;
 		template <typename T>
 		struct P_has<T, Pack<>> : std::false_type 
 		{};
-		template <typename T, typename U, typename... Ts>
-		struct P_has<T, Pack<U, Ts...>> : P_has<T, Pack<Ts...>> 
+		template <typename T1, typename T2, typename... T_v>
+		struct P_has<T1, Pack<T2, T_v...>> : P_has<T1, Pack<T_v...>>
 		{};
-		template <typename T, typename... Ts>
-		struct P_has<T, Pack<T, Ts...>> : std::true_type 
+		template <typename T, typename... T_v>
+		struct P_has<T, Pack<T, T_v...>> : std::true_type
 		{};
 
 		template <class P, class T>
 		struct P_index;
-		template <class T, class... Ts>
-		struct P_index<Pack<T, Ts...>, T> : std::integral_constant<std::size_t, 0>
+		template <class T, class... T_v>
+		struct P_index<Pack<T, T_v...>, T> : std::integral_constant<std::size_t, 0>
 		{};
-		template <class T, class U, class... Ts>
-		struct P_index<Pack<U, Ts...>, T> : std::integral_constant<std::size_t, 1 + P_index<Pack< Ts...>, T>::value>
+		template <class T1, class T2, class... T_v>
+		struct P_index<Pack<T2, T_v...>, T1> : std::integral_constant<std::size_t, 1 + P_index<Pack< T_v...>, T1>::value>
 		{};
 		template <class T>
 		struct P_index<Pack<>, T>
 		{};
 
-		template<size_t n, class p>
+		template<size_t n, class P>
 		struct P_element;
-		template<size_t n, class e1, class ... e>
-		struct P_element<n, Pack<e1, e...>>
+		template<size_t n, class T, class ... T_v>
+		struct P_element<n, Pack<T, T_v...>>
 		{
-			using type = std::conditional_t<n == 0, e1, typename P_element<n - 1, Pack< e...>>::type>;
+			using type = std::conditional_t<n == 0, T, typename P_element<n - 1, Pack< T_v...>>::type>;
 		};
-		template<size_t n, class e1 >
-		struct P_element<n, Pack<e1>>
+		template<size_t n, class T >
+		struct P_element<n, Pack<T>>
 		{
-			using type = e1;
+			using type = T;
 		};
 
-		template<class t>
+		template<class T>
 		struct P_is : std::false_type {};
-		template<class ... pp>
-		struct P_is<Pack<pp...>> : std::true_type {};
+		template<class ... T_v>
+		struct P_is<Pack<T_v...>> : std::true_type {};
 	}
 
-	template<class p, class t>
-	constexpr bool p_has = detail::P_has<t,p>::value;
+	template<class P, class T>
+	constexpr bool p_has = detail::P_has<T, P>::value;
 
-	template<class p, class t>
-	constexpr size_t p_index = detail::P_index<p,t>::value;
+	template<class P, class T>
+	constexpr size_t p_index = detail::P_index<P, T>::value;
 
-	template <size_t n, class p>
-	using p_element = typename  detail::P_element<n, p>::type;
+	template <size_t n, class P>
+	using p_element = typename  detail::P_element<n, P>::type;
 
-	template <class p>
-	constexpr bool is_pack = detail::P_is<p>::value;
+	template <class P>
+	constexpr bool is_pack = detail::P_is<P>::value;
 }
 

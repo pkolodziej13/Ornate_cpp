@@ -7,25 +7,25 @@ namespace typ
 {
 	namespace detail
 	{
-		template<class t, class sequence>
+		template<class T, class Sequence>
 		struct P_array;
-		template<class t, size_t ... I >
-		struct P_array<t, std::index_sequence<I...>>
+		template<class T, size_t ... i_v >
+		struct P_array<T, std::index_sequence<i_v...>>
 		{
 			template<size_t i>
-			using i_type = t;
-			using type = Pack<i_type<I>...>;
+			using Always_type = T;
+			using type = Pack<Always_type<i_v>...>;
 		};
 
-		template<template<size_t>class transform, class sequence >
+		template<template<size_t>class Transform_template, class Sequence >
 		struct P_from_index_squence;
-		template<template<size_t>class transform, size_t ... sequence >
-		struct P_from_index_squence<transform, std::index_sequence<sequence...>>
+		template<template<size_t>class Transform_template, size_t ... i_v >
+		struct P_from_index_squence<Transform_template, std::index_sequence<i_v...>>
 		{
-			using type = Pack<transform<sequence>...>;
+			using type = Pack<Transform_template<i_v>...>;
 		};
 
-		template<class t>
+		template<class T>
 		struct P_index_sequence;
 		template<size_t ... i_v>
 		struct P_index_sequence<std::index_sequence<i_v...>>
@@ -37,24 +37,24 @@ namespace typ
 
 	template<class Pack, auto selected_types>
 	struct P_select_form_array;
-	template<class ...pp, auto aa>
-	struct P_select_form_array<Pack<pp...>, aa>
+	template<class ...T_v, auto array_value>
+	struct P_select_form_array<Pack<T_v...>, array_value>
 	{
 		template<class Sequence>
 		struct Expanding_indexes;
-		template<size_t ... I>
-		struct Expanding_indexes<std::index_sequence<I...>>
+		template<size_t ... i_v>
+		struct Expanding_indexes<std::index_sequence<i_v...>>
 		{
-			using type = Pack<typ::p_element<aa[I], Pack<pp...>>...>;
+			using type = Pack<typ::p_element<array_value[i_v], Pack<T_v...>>...>;
 		};
-		using type = typename Expanding_indexes<std::make_index_sequence<std::tuple_size<decltype(aa)>::value>>::type;
+		using type = typename Expanding_indexes<std::make_index_sequence<std::tuple_size<decltype(array_value)>::value>>::type;
 	};
 
-	template<class t, size_t size>
-	using p_array = typename detail::P_array<t, std::make_index_sequence<size>>::type;
+	template<class T, size_t size>
+	using p_array = typename detail::P_array<T, std::make_index_sequence<size>>::type;
 
-	template<template<size_t>class transform, size_t I>
-	using p_from_index_squence = typename detail::P_from_index_squence<transform, std::make_index_sequence<I>>::type;
+	template<template<size_t>class Transform_template, size_t I>
+	using p_from_index_squence = typename detail::P_from_index_squence<Transform_template, std::make_index_sequence<I>>::type;
 
 	template<size_t I>
 	using p_index_sequence = typename detail::P_index_sequence<std::make_index_sequence<I>>::type;

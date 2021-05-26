@@ -33,9 +33,9 @@ namespace agg
 			elements[i] = elements.back();
 			elements.pop_back();
 		}
-		bool has(const T & t)const
+		bool has(const T & e)const
 		{
-			return index_of_element(t) != -1;
+			return index_of_element(e) != -1;
 		}
 		T & operator[](size_t i)
 		{
@@ -62,11 +62,11 @@ namespace agg
 		{
 			return elements.size();
 		}
-
 		void clear()
 		{
 			elements.clear();
 		}
+
 	private:
 		std::vector<T> elements;
 	};

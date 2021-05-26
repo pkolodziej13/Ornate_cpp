@@ -1,10 +1,10 @@
 #pragma once
 #include <deque>
 #include <vector>
+#include <cassert>
 
 #include <Utilities/Non_replicable.h>
 
-#include "Relation_mutual.h"
 
 namespace obj
 {

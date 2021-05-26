@@ -1,76 +1,84 @@
 #pragma once
 namespace uti
 {
-	template<class t, size_t number>
+	template<class T, size_t number>
 	struct Numbered_component
 	{
-		Numbered_component() {}
-		Numbered_component(const t& element) :element(element)
-		{}
-		t element;
-		t& get()
-		{
-			return element;
-		}
-		const t& get()const
-		{
-			return element;
-		}
-		using type = t;
+		using type = T;
 		static constexpr size_t value = number;
-	};
-	template<class t>
-	struct Numbered_component<t, 0>
-	{
+
 		Numbered_component() {}
-		Numbered_component(const t& element) :first(element)
+		Numbered_component(const T& element) :element(element)
 		{}
-		t first;
-		t& get()
+		T& get()
 		{
-			return first;
+			return element;
 		}
-		const t& get()const
+		const T& get()const
 		{
-			return first;
+			return element;
 		}
-		using type = t;
+
+		T element;
+	};
+	template<class T>
+	struct Numbered_component<T, 0>
+	{
+		using type = T;
 		static constexpr size_t value = 0;
-	};
-	template<class t>
-	struct Numbered_component<t, 1>
-	{
+
 		Numbered_component() {}
-		Numbered_component(const t& element) :second(element)
+		Numbered_component(const T& element) :first(element)
 		{}
-		t second;
-		t& get()
+		T& get()
 		{
-			return second;
+			return first;
 		}
-		const t& get()const
+		const T& get()const
 		{
-			return second;
+			return first;
 		}
-		using type = t;
+
+		T first;
+	};
+	template<class T>
+	struct Numbered_component<T, 1>
+	{
+		using type = T;
 		static constexpr size_t value = 1;
-	};
-	template<class t>
-	struct Numbered_component<t, 2>
-	{
+
 		Numbered_component() {}
-		Numbered_component(const t &  element) :third(element)
+		Numbered_component(const T& element) :second(element)
 		{}
-		t third;
-		t& get()
+		T& get()
 		{
-			return third;
+			return second;
 		}
-		const t& get()const
+		const T& get()const
 		{
-			return third;
+			return second;
 		}
-		using type = t;
+
+		T second;
+	};
+	template<class T>
+	struct Numbered_component<T, 2>
+	{
+		using type = T;
 		static constexpr size_t value = 2;
+
+		Numbered_component() {}
+		Numbered_component(const T&  element) :third(element)
+		{}
+		T& get()
+		{
+			return third;
+		}
+		const T& get()const
+		{
+			return third;
+		}
+
+		T third;
 	};
 }

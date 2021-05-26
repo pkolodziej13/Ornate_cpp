@@ -1,7 +1,6 @@
 #pragma once
 #include <Objects/Relation_final.h>
 #include <Objects/Relations_popular.h>
-#include <Objects/Standard_relations.h>
 
 #include "Collisions_requirements.h"
 #include "Collisions_engine_Engine_collider_relation_care.h"
@@ -11,7 +10,7 @@
 
 namespace col
 {
-	using Relation_object_colider = obj::Relation_profiled_symetric_events<Collider_object_relation_eventer, obj::Dense_indexed_relation, obj::Dense_list_relation, Object_unified, Colider_unified>;
+	using Relation_object_colider = obj::Relation_profiled_symetric_events<Collider_object_relation_eventer, obj::Relation_side_dense_indexed, obj::Relation_side_dense_list, Object_unified, Colider_unified>;
 	
 	template<class Layer, class Engine, class Comarer>
 	using Relation_engine_object =
